@@ -13,7 +13,7 @@ import static io.github.vikindor.specs.ApiSpecs.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Epic("Todoist API")
+@Epic("API")
 @Feature("Projects")
 @Tag("api") @Tag("projects") @Tag("regression")
 @DisplayName("Projects")
