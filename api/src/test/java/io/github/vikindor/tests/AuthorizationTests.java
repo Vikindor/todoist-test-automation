@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static io.github.vikindor.api.UserApi.getUser;
 import static io.github.vikindor.specs.ApiSpecs.*;
 
-@Epic("Todoist API")
+@Epic("API")
 @Feature("Authorization")
 @Tag("api") @Tag("auth") @Tag("regression")
 @DisplayName("Authorization")
