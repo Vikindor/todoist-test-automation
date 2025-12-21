@@ -16,14 +16,18 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import static io.appium.java_client.remote.AutomationName.ANDROID_UIAUTOMATOR2;
 import static io.github.vikindor.configs.MobilePlatform.*;
 
 public class MobileDriver implements WebDriverProvider {
 
-    private static final String APPS_DIR = "mobile-android/src/test/resources/apps";
+    private static final String APPS_DIR = "mobile-android/src/test/resources/app/";
 
     @NonNull
     @Override
@@ -40,13 +44,15 @@ public class MobileDriver implements WebDriverProvider {
     }
 
     private WebDriver emulAndroidDriver() {
+        installSplitApk();
+
         UiAutomator2Options options = new UiAutomator2Options();
 
         options.setPlatformName(ANDROID);
         options.setAutomationName(ANDROID_UIAUTOMATOR2);
         options.setDeviceName(ConfigProvider.config().deviceName());
         options.setPlatformVersion(ConfigProvider.config().platformVersion());
-        options.setApp(getAppPath());
+//        options.setApp(getAppPath());
         options.setAppPackage(ConfigProvider.config().appPackage());
         options.setAppActivity(ConfigProvider.config().appActivity());
         options.setAutoGrantPermissions(false);
@@ -55,6 +61,8 @@ public class MobileDriver implements WebDriverProvider {
     }
 
     private WebDriver realAndroidDriver() {
+        installSplitApk();
+
         AdbDeviceDetector.DeviceInfo adbDetector = AdbDeviceDetector.detectDeviceInfo();
 
         UiAutomator2Options options = new UiAutomator2Options();
@@ -63,7 +71,7 @@ public class MobileDriver implements WebDriverProvider {
         options.setAutomationName(ANDROID_UIAUTOMATOR2);
         options.setDeviceName(adbDetector.deviceId);
         options.setPlatformVersion(adbDetector.platformVersion);
-        options.setApp(getAppPath());
+//        options.setApp(getAppPath());
         options.setAppPackage(ConfigProvider.config().appPackage());
         options.setAppActivity(ConfigProvider.config().appActivity());
         options.setAutoGrantPermissions(false);
@@ -72,36 +80,39 @@ public class MobileDriver implements WebDriverProvider {
     }
 
     private WebDriver bsAndroidDriver() {
-        String bsSessionName = System.getProperty("bs.sessionName", ConfigProvider.config().sessionName());
+        String bsSessionName = System.getProperty("browserstack.session.name",
+                ConfigProvider.config().browserstackSessionName());
 
         UiAutomator2Options options = new UiAutomator2Options();
 
         options.setApp(ConfigProvider.config().browserstackApp());
         options.setDeviceName(ConfigProvider.config().deviceName());
         options.setPlatformVersion(ConfigProvider.config().platformVersion());
-        options.setCapability("project", ConfigProvider.config().projectName());
-        options.setCapability("build", ConfigProvider.config().buildName());
+        options.setCapability("project", ConfigProvider.config().browserstackProjectName());
+        options.setCapability("build", ConfigProvider.config().browserstackBuildName());
         options.setCapability("name", bsSessionName);
 
         return new AndroidDriver(getServerUrl(), options);
     }
 
     private WebDriver bsIOSDriver() {
-        String bsSessionName = System.getProperty("bs.sessionName", ConfigProvider.config().sessionName());
+        String bsSessionName = System.getProperty("browserstack.session.name",
+                ConfigProvider.config().browserstackSessionName());
 
         XCUITestOptions options = new XCUITestOptions();
 
         options.setApp(ConfigProvider.config().browserstackApp());
         options.setDeviceName(ConfigProvider.config().deviceName());
         options.setPlatformVersion(ConfigProvider.config().platformVersion());
-        options.setCapability("project", ConfigProvider.config().projectName());
-        options.setCapability("build", ConfigProvider.config().buildName());
+        options.setCapability("project", ConfigProvider.config().browserstackProjectName());
+        options.setCapability("build", ConfigProvider.config().browserstackBuildName());
         options.setCapability("name", bsSessionName);
 
         return new IOSDriver(getServerUrl(), options);
     }
 
-    private String getAppPath() {
+    // For single-file APKs ("app" property = APK file name, e.g. todoist.apk)
+    private String getApkPath() {
         File app = Paths.get(
                 System.getProperty("user.dir"),
                 APPS_DIR,
@@ -113,6 +124,42 @@ public class MobileDriver implements WebDriverProvider {
         }
 
         return app.getAbsolutePath();
+    }
+
+    // For unpacked split APK bundles ("app" property = directory name, e.g. todoist)
+    private void installSplitApk() {
+        Path appDir = Paths.get(
+                System.getProperty("user.dir"),
+                APPS_DIR,
+                ConfigProvider.config().app()
+        );
+
+        if (!Files.exists(appDir)) {
+            throw new AssertionError("App directory not found: " + appDir);
+        }
+
+        try {
+            List<String> command = new ArrayList<>();
+            command.add("adb");
+            command.add("install-multiple");
+            command.add("-r");
+
+            Files.list(appDir)
+                 .filter(p -> p.toString().endsWith(".apk"))
+                 .forEach(p -> command.add(p.toAbsolutePath().toString()));
+
+            Process process = new ProcessBuilder(command)
+                    .redirectErrorStream(true)
+                    .start();
+
+            int exitCode = process.waitFor();
+            if (exitCode != 0) {
+                throw new RuntimeException("Failed to install split APKs");
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error installing split APKs", e);
+        }
     }
 
     private URL getServerUrl() {
