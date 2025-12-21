@@ -8,6 +8,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.github.vikindor.configs.ConfigProvider;
 import io.github.vikindor.drivers.MobileDriver;
 import io.github.vikindor.helpers.AllureAttach;
+import io.github.vikindor.helpers.AuthHelper;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -52,8 +53,8 @@ public abstract class TestBase {
 
     @BeforeEach
     void setUpTest(TestInfo testInfo) {
-        String bsSessionName = testInfo.getDisplayName();
-        System.setProperty("bs.sessionName", bsSessionName);
+        String browserstackSessionName = testInfo.getDisplayName();
+        System.setProperty("browserstack.session.name", browserstackSessionName);
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
@@ -61,6 +62,8 @@ public abstract class TestBase {
 
         AndroidDriver driver = (AndroidDriver) WebDriverRunner.getWebDriver();
         driver.startRecordingScreen();
+
+        AuthHelper.login(ConfigProvider.config().todoistEmail(), ConfigProvider.config().todoistPassword());
     }
 
     @AfterEach
