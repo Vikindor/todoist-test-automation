@@ -70,23 +70,23 @@ public class TasksTests extends TestBase {
     @DisplayName("Task can be completed")
     void shouldCompleteTask() {
 
-        String initialName = "Test Task " + System.currentTimeMillis();
+        String taskName = "Test Task " + System.currentTimeMillis();
 
         step("Create task", () -> {
             quickAdd().tap();
             quickAddItemContainer()
-                    .setMessage(initialName)
+                    .setMessage(taskName)
                     .tapAdd();
             A.back();
         });
 
         step("Complete task", () -> {
-            inbox().completeTask(initialName);
+            inbox().completeTask(taskName);
         });
 
         step("Verify task completed", () -> {
             snackBar().shouldShowCompletedMessage();
-            inbox().shouldNotContainTask(initialName);
+            inbox().shouldNotContainTask(taskName);
         });
     }
 }
