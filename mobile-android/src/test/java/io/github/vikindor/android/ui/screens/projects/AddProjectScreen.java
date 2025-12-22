@@ -11,8 +11,8 @@ public class AddProjectScreen {
             projectNameInput = $(id("com.todoist:id/name")),
             doneButton = $(id("com.todoist:id/menu_form_submit"));
 
-    public AddProjectScreen setProjectName(String name) {
-        projectNameInput.sendKeys(name);
+    public AddProjectScreen setProjectName(String projectName) {
+        projectNameInput.sendKeys(projectName);
         return this;
     }
 
