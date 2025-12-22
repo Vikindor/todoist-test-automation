@@ -56,4 +56,27 @@ public class TasksTests extends TestBase {
             inbox().shouldNotContainTask(newName);
         });
     }
+
+    @Test
+    @Tag("smoke")
+    @DisplayName("Task can be completed")
+    void shouldCompleteTask() {
+
+        String taskName = "Test Task " + System.currentTimeMillis();
+
+        step("Create task", () -> {
+            inbox().clickAddTaskButton();
+            quickAdd()
+                    .setTaskName(taskName)
+                    .clickSubmitButton();
+        });
+
+        step("Complete task", () -> {
+            inbox().completeTask(taskName);
+        });
+
+        step("Verify task completed", () -> {
+            inbox().shouldNotContainTask(taskName);
+        });
+    }
 }
