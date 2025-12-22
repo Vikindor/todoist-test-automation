@@ -1,4 +1,4 @@
-package io.github.vikindor.web.ui.pages;
+package io.github.vikindor.web.ui.pages.auth;
 
 import com.codeborne.selenide.SelenideElement;
 
