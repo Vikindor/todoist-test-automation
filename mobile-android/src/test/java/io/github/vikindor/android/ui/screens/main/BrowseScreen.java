@@ -9,7 +9,7 @@ import static io.appium.java_client.AppiumBy.xpath;
 
 public class BrowseScreen {
 
-    private static final SelenideElement
+    private final SelenideElement
             addButton = $(androidUIAutomator("new UiSelector().description(\"Add\")")),
             addProjectAction = $(androidUIAutomator("new UiSelector().text(\"Add project\")"));
 
