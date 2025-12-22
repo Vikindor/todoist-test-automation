@@ -2,6 +2,7 @@ package io.github.vikindor.web.ui.pages.projects;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ProjectsPage {
@@ -17,12 +18,12 @@ public class ProjectsPage {
     }
 
     public ProjectsPage clickAddButton() {
-        addButton.click();
+        addButton.shouldBe(visible).click();
         return this;
     }
 
     public ProjectsPage clickAddProject() {
-        addProjectAction.click();
+        addProjectAction.shouldBe(visible).click();
         return this;
     }
 }
