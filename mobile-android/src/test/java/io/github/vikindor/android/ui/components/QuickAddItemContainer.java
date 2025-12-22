@@ -8,7 +8,7 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class QuickAddItemContainer {
 
-    private static final SelenideElement
+    private final SelenideElement
             messageInput = $(id("android:id/message")),
             addButton = $(accessibilityId("Add"));
 

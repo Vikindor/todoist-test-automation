@@ -7,7 +7,7 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class ItemDetailsContainer {
 
-    private static final SelenideElement
+    private final SelenideElement
             taskTitle = $(id("com.todoist:id/item_content")),
             saveButton = $(id("com.todoist:id/item_submit"));
 

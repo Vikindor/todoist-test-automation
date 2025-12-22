@@ -7,10 +7,10 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class CreateItemContainer {
 
-    private static final SelenideElement
+    private final SelenideElement
             overflowButton = $(id("com.todoist:id/item_overflow")),
             deleteTaskAction = $(id("com.todoist:id/delete")),
-            taskTitle = $(id("com.todoist:id/item_content"));
+            taskName = $(id("com.todoist:id/item_content"));
 
     public CreateItemContainer tapOverflowButton() {
         overflowButton.click();
@@ -22,8 +22,8 @@ public class CreateItemContainer {
         return this;
     }
 
-    public CreateItemContainer tapTaskTitle() {
-        taskTitle.click();
+    public CreateItemContainer tapTaskName() {
+        taskName.click();
         return this;
     }
 }
