@@ -25,5 +25,4 @@ public class ProjectsPage {
         addProjectAction.click();
         return this;
     }
-
 }
