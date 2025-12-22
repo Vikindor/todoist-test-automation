@@ -43,10 +43,10 @@ public interface ProjectConfig extends Config {
     @Key("browserstack.key")
     String browserstackKey();
 
-    @Key("browserstack.url")
+    @Key("browserstack.app")
     String browserstackApp();
 
-    @Key("browserstack.app")
+    @Key("browserstack.url")
     String browserstackUrl();
 
     @Key("browserstack.project.name")
