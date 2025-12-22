@@ -1,4 +1,4 @@
-package io.github.vikindor.android.ui.components;
+package io.github.vikindor.android.ui.screens.main;
 
 import com.codeborne.selenide.SelenideElement;
 
@@ -29,19 +29,17 @@ public class TasksList {
         ));
     }
 
-    public void shouldContainTask(String taskName) {
-        taskName(taskName).shouldBe(visible);
-    }
+    void shouldContainTask(String taskName) { taskName(taskName).shouldBe(visible); }
 
-    public void shouldNotContainTask(String taskName) {
+    void shouldNotContainTask(String taskName) {
         taskName(taskName).shouldNotBe(visible);
     }
 
-    public void openTask(String taskName) {
+    void openTask(String taskName) {
         taskRoot(taskName).shouldBe(visible).click();
     }
 
-    public void checkmarkTask(String taskName) {
+    void checkmarkTask(String taskName) {
         taskCheckmark(taskName).shouldBe(visible).click();
     }
 }
