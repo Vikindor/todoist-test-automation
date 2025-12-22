@@ -21,12 +21,12 @@ import static io.qameta.allure.Allure.step;
 @DisplayName("Projects")
 public class ProjectsTests extends TestBase {
 
-    NavigationBar navigationBar = new NavigationBar();
-    BrowseScreen browseScreen =  new BrowseScreen();
-    AddProjectScreen addProjectScreen =  new AddProjectScreen();
-    ProjectScreen projectScreen =  new ProjectScreen();
-    EditProjectScreen editProjectScreen =  new EditProjectScreen();
-    AlertDialog alertDialog = new AlertDialog();
+    NavigationBar navigationBar() { return new NavigationBar(); }
+    BrowseScreen browseScreen() { return new BrowseScreen(); }
+    AddProjectScreen addProjectScreen() { return new AddProjectScreen(); }
+    ProjectScreen projectScreen() { return new ProjectScreen(); }
+    EditProjectScreen editProjectScreen() { return new EditProjectScreen(); }
+    AlertDialog alertDialog() { return new AlertDialog(); }
 
     @Test
     @Tag("smoke")
@@ -36,41 +36,41 @@ public class ProjectsTests extends TestBase {
         String initialName = "Test Project " + System.currentTimeMillis();
         String newName = initialName + " updated";
 
-        navigationBar.tapBrowse();
+        navigationBar().tapBrowse();
 
         step("Create project", () -> {
-            browseScreen
+            browseScreen()
                     .tapAdd()
                     .tapAddProject();
-            addProjectScreen
+            addProjectScreen()
                     .setProjectName(initialName)
                     .tapDone();
         });
 
         step("Read project and verify actual name", () -> {
-            projectScreen.verifyProjectName(initialName);
+            projectScreen().verifyProjectName(initialName);
         });
 
         step("Update project and verify updated name", () -> {
-            projectScreen
+            projectScreen()
                     .tapMoreOptions()
                     .tapEdit();
-            editProjectScreen
+            editProjectScreen()
                     .setName(newName)
                     .tapDone();
-            projectScreen.verifyProjectName(newName);
+            projectScreen().verifyProjectName(newName);
             A.back();
-            browseScreen.shouldHaveProject(newName);
+            browseScreen().shouldHaveProject(newName);
         });
 
         step("Delete task and verify it is deleted", () -> {
-            browseScreen.openProject(newName);
-            projectScreen
+            browseScreen().openProject(newName);
+            projectScreen()
                     .tapMoreOptions()
                     .tapDelete();
-            alertDialog.tapDelete();
-            navigationBar.tapBrowse();
-            browseScreen.shouldNotHaveProject(newName);
+            alertDialog().tapDelete();
+            navigationBar().tapBrowse();
+            browseScreen().shouldNotHaveProject(newName);
         });
     }
 }

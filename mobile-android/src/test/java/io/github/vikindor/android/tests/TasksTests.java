@@ -17,13 +17,13 @@ import static io.qameta.allure.Allure.step;
 @DisplayName("Tasks")
 public class TasksTests extends TestBase {
 
-    InboxScreen inbox = new InboxScreen();
-    QuickAddButton quickAdd = new QuickAddButton();
-    QuickAddItemContainer quickAddItemContainer = new QuickAddItemContainer();
-    CreateItemContainer createItemContainer = new CreateItemContainer();
-    ItemDetailsContainer itemDetailsContainer = new ItemDetailsContainer();
-    AlertDialog alertDialog = new AlertDialog();
-    SnackBar snackBar = new SnackBar();
+    InboxScreen inbox() { return new InboxScreen(); }
+    QuickAddButton quickAdd() { return new QuickAddButton(); }
+    QuickAddItemContainer quickAddItemContainer() { return new QuickAddItemContainer(); }
+    CreateItemContainer createItemContainer() { return new CreateItemContainer(); }
+    ItemDetailsContainer itemDetailsContainer() { return new ItemDetailsContainer(); }
+    AlertDialog alertDialog() { return new AlertDialog(); }
+    SnackBar snackBar() { return new SnackBar(); }
 
     @Test
     @Tag("smoke")
@@ -34,34 +34,34 @@ public class TasksTests extends TestBase {
         String newName = initialName + " updated";
 
         step("Create task", () -> {
-            quickAdd.tap();
-            quickAddItemContainer
+            quickAdd().tap();
+            quickAddItemContainer()
                     .setMessage(initialName)
                     .tapAdd();
             A.back();
         });
 
         step("Read task and verify actual name", () -> {
-            inbox.shouldContainTask(initialName);
+            inbox().shouldContainTask(initialName);
         });
 
         step("Update task and verify updated name", () -> {
-            inbox.openTask(initialName);
-            createItemContainer.tapTaskTitle();
-            itemDetailsContainer
+            inbox().openTask(initialName);
+            createItemContainer().tapTaskName();
+            itemDetailsContainer()
                     .setTitle(newName)
                     .tapSave();
             A.back();
-            inbox.shouldContainTask(newName);
+            inbox().shouldContainTask(newName);
         });
 
         step("Delete task and verify it is deleted", () -> {
-            inbox.openTask(newName);
-            createItemContainer
+            inbox().openTask(newName);
+            createItemContainer()
                     .tapOverflowButton()
                     .tapDeleteTask();
-            alertDialog.tapDelete();
-            inbox.shouldNotContainTask(newName);
+            alertDialog().tapDelete();
+            inbox().shouldNotContainTask(newName);
         });
     }
 
@@ -73,20 +73,20 @@ public class TasksTests extends TestBase {
         String initialName = "Test Task " + System.currentTimeMillis();
 
         step("Create task", () -> {
-            quickAdd.tap();
-            quickAddItemContainer
+            quickAdd().tap();
+            quickAddItemContainer()
                     .setMessage(initialName)
                     .tapAdd();
             A.back();
         });
 
         step("Complete task", () -> {
-            inbox.completeTask(initialName);
+            inbox().completeTask(initialName);
         });
 
         step("Verify task completed", () -> {
-            snackBar.shouldShowCompletedMessage();
-            inbox.shouldNotContainTask(initialName);
+            snackBar().shouldShowCompletedMessage();
+            inbox().shouldNotContainTask(initialName);
         });
     }
 }
