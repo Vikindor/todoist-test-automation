@@ -18,11 +18,6 @@ public class InboxPage {
         return this;
     }
 
-    public InboxPage ensureOpened() {
-        $("[data-testid='app-sidebar-container']").should(exist).shouldBe(visible);
-        return this;
-    }
-
     public InboxPage clickAddTaskButton() {
         sidebarContainer.$$("button").findBy(text("Add Task")).click();
         return this;
