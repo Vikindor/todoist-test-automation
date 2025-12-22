@@ -1,28 +1,26 @@
 package io.github.vikindor.android.ui.screens.main;
 
-import io.github.vikindor.android.ui.components.TasksList;
-
 public class InboxScreen {
 
     private final TasksList tasksList = new TasksList();
 
-    public InboxScreen shouldContainTask(String title) {
-        tasksList.shouldContainTask(title);
+    public InboxScreen shouldContainTask(String taskName) {
+        tasksList.shouldContainTask(taskName);
         return this;
     }
 
-    public InboxScreen shouldNotContainTask(String title) {
-        tasksList.shouldNotContainTask(title);
+    public InboxScreen shouldNotContainTask(String taskName) {
+        tasksList.shouldNotContainTask(taskName);
         return this;
     }
 
-    public InboxScreen openTask(String title) {
-        tasksList.openTask(title);
+    public InboxScreen openTask(String taskName) {
+        tasksList.openTask(taskName);
         return this;
     }
 
-    public InboxScreen completeTask(String title) {
-        tasksList.checkmarkTask(title);
+    public InboxScreen completeTask(String taskName) {
+        tasksList.checkmarkTask(taskName);
         return this;
     }
 }
