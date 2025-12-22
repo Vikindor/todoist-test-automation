@@ -7,7 +7,7 @@ import static io.appium.java_client.AppiumBy.androidUIAutomator;
 
 public class LoginScreen {
 
-    private static final SelenideElement
+    private final SelenideElement
             emailInput = $(androidUIAutomator("new UiSelector().resourceId(\"email\")")),
             passwordInput = $(androidUIAutomator("new UiSelector().resourceId(\"password\")")),
             loginButton = $(androidUIAutomator("new UiSelector().resourceId(\"auth_button_tag\")"));
