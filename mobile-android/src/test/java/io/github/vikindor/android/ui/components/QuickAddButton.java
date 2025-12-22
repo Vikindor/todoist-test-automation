@@ -7,7 +7,7 @@ import static io.appium.java_client.AppiumBy.accessibilityId;
 
 public class QuickAddButton {
 
-    private static final SelenideElement quickAddButton = $(accessibilityId("Quick add"));
+    private final SelenideElement quickAddButton = $(accessibilityId("Quick add"));
 
     public QuickAddButton tap() {
         quickAddButton.click();

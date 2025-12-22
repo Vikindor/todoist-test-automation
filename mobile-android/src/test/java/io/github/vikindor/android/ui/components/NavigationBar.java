@@ -7,7 +7,7 @@ import static io.appium.java_client.AppiumBy.androidUIAutomator;
 
 public class NavigationBar {
 
-    private static final SelenideElement
+    private final SelenideElement
             inboxButton = $(androidUIAutomator("new UiSelector().resourceId(\"test_tag_inbox\")")),
             browseButton = $(androidUIAutomator("new UiSelector().resourceId(\"test_tag_navigation\")"));
 

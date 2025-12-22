@@ -7,7 +7,7 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class AlertDialog {
 
-    private static final SelenideElement
+    private final SelenideElement
             cancelButton = $(id("android:id/button2")),
             deleteButton = $(id("android:id/button1"));
 
