@@ -1,6 +1,6 @@
 package io.github.vikindor.web.tests;
 
-import io.github.vikindor.web.ui.components.DeleteTaskModal;
+import io.github.vikindor.web.ui.components.DeleteModal;
 import io.github.vikindor.web.ui.components.QuickAddModal;
 import io.github.vikindor.web.ui.pages.main.InboxPage;
 import io.qameta.allure.Epic;
@@ -19,7 +19,7 @@ public class TasksTests extends TestBase {
 
     InboxPage inbox() { return new InboxPage(); }
     QuickAddModal quickAdd() { return new QuickAddModal(); }
-    DeleteTaskModal deleteTaskModal() { return new DeleteTaskModal(); }
+    DeleteModal deleteTaskModal() { return new DeleteModal(); }
 
     @Test
     @Tag("smoke")
