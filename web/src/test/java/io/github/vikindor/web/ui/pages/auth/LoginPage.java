@@ -1,6 +1,7 @@
 package io.github.vikindor.web.ui.pages.auth;
 
 import com.codeborne.selenide.SelenideElement;
+import io.github.vikindor.web.ui.pages.main.InboxPage;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -26,8 +27,8 @@ public class LoginPage {
         return this;
     }
 
-    public LoginPage clickLogInButton() {
+    public InboxPage clickLogInButton() {
         logInButton.click();
-        return this;
+        return new InboxPage().ensureOpened();
     }
 }
