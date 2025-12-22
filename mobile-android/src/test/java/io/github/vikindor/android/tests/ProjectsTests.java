@@ -53,7 +53,7 @@ public class ProjectsTests extends TestBase {
 
         step("Update project and verify updated name", () -> {
             projectScreen()
-                    .tapMoreOptions()
+                    .openProjectOptionsMenu()
                     .tapEdit();
             editProjectScreen()
                     .setName(newName)
@@ -66,7 +66,7 @@ public class ProjectsTests extends TestBase {
         step("Delete task and verify it is deleted", () -> {
             browseScreen().openProject(newName);
             projectScreen()
-                    .tapMoreOptions()
+                    .openProjectOptionsMenu()
                     .tapDelete();
             alertDialog().tapDelete();
             navigationBar().tapBrowse();
