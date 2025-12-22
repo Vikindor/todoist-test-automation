@@ -7,7 +7,7 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class EditProjectScreen {
 
-    private static final SelenideElement
+    private final SelenideElement
             nameInput = $(id("com.todoist:id/name")),
             doneButton = $(id("com.todoist:id/menu_form_submit"));
 

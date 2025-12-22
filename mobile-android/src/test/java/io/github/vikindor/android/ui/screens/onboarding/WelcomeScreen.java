@@ -7,7 +7,7 @@ import static io.appium.java_client.AppiumBy.androidUIAutomator;
 
 public class WelcomeScreen {
 
-    private static final SelenideElement
+    private final SelenideElement
             continueWithEmailButton =
             $(androidUIAutomator("new UiSelector().className(\"android.widget.Button\").instance(0)")),
             loginWithEmailButton =

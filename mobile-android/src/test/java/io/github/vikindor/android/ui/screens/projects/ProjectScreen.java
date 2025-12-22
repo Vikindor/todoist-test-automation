@@ -8,7 +8,7 @@ import static io.appium.java_client.AppiumBy.*;
 
 public class ProjectScreen {
 
-    private final static SelenideElement
+    private final SelenideElement
             moreOptionsButton = $(androidUIAutomator("new UiSelector().description(\"More options\")")),
             editAction = $(androidUIAutomator("new UiSelector().text(\"Edit\")")),
             deleteAction = $(androidUIAutomator("new UiSelector().text(\"Delete\")"));
