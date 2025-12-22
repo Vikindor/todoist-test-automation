@@ -34,6 +34,11 @@ public class InboxPage {
         return this;
     }
 
+    public InboxPage completeTask(String taskName) {
+        tasksList.clickTaskCheckmark(taskName);
+        return this;
+    }
+
     public InboxPage editTask(String taskName) {
         tasksList.clickEdit(taskName);
         return this;

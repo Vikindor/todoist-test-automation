@@ -10,6 +10,10 @@ public class TaskItem {
         this.root = root;
     }
 
+    void clickTaskCheckmark() {
+        root.$("[data-action-hint='task-complete']").click();
+    }
+
     void clickEditAction() {
         root.hover();
         root.$("[data-action-hint='task-edit']").click();
