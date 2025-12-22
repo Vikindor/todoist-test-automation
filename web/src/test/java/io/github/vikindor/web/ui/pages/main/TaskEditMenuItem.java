@@ -6,12 +6,7 @@ public class TaskEditMenuItem {
 
     private final SelenideElement root;
 
-    public TaskEditMenuItem(SelenideElement root) {
-        this.root = root;
-    }
+    TaskEditMenuItem(SelenideElement root) { this.root = root; }
 
-    void clickDeleteAction() {
-        root.$("[data-action-hint='task-overflow-menu-delete']").click();
-    }
-
+    void clickDeleteAction() { root.$("[data-action-hint='task-overflow-menu-delete']").click(); }
 }
