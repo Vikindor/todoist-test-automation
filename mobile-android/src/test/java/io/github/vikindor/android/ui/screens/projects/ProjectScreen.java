@@ -22,7 +22,7 @@ public class ProjectScreen {
         return this;
     }
 
-    public ProjectScreen tapMoreOptions() {
+    public ProjectScreen openProjectOptionsMenu() {
         moreOptionsButton.click();
         return this;
     }
