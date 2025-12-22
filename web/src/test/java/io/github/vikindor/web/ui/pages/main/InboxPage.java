@@ -2,20 +2,24 @@ package io.github.vikindor.web.ui.pages.main;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class InboxPage {
 
+    private final SelenideElement sidebarContainer = $("[data-testid='app-sidebar-container']");
+
     private final TasksList tasksList =  new TasksList();
     private final TaskEditMenu taskEditMenu = new TaskEditMenu();
 
-    private final SelenideElement
-            sidebarContainer = $("[data-testid='app-sidebar-container']");
-
     public InboxPage openPage() {
         open("/app/inbox");
+        return this;
+    }
+
+    public InboxPage ensureOpened() {
+        $("[data-testid='app-sidebar-container']").should(exist).shouldBe(visible);
         return this;
     }
 
