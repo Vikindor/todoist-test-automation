@@ -19,7 +19,13 @@ public class InboxPage {
     }
 
     public InboxPage clickAddTaskButton() {
-        sidebarContainer.$$("button").findBy(text("Add Task")).click();
+        sidebarContainer.shouldBe(visible);
+
+        sidebarContainer.$$("span")
+                        .findBy(text("Add task"))
+                        .shouldBe(visible)
+                        .closest("button")
+                        .click();
         return this;
     }
 
