@@ -1,0 +1,24 @@
+{
+  "base": {
+    "logo": "notifications/todoist_logo1.png",
+    "project": "Todoist Test Automation",
+    "environment": "Prod",
+    "comment": "Ping @Vikindor",
+    "language": "en",
+    "allureFolder": "build/reports/allure-report/allureReport",
+    "enableChart": true,
+    "enableSuitesPublishing": true,
+	"durationFormat": "HH:mm:ss.SSS",
+    "customData": {
+      "variable1": "value1",
+      "variable2": "value2"
+    }
+  },
+  "telegram": {
+    "token": "8088117533:AAFgJ93fbbEUHMnMjx8346GYjjzVUbFAocw",
+    "chat": "-1002974137094",
+    "topic": "",
+    "replyTo": "",
+    "templatePath": "/templates/telegram.ftl"
+  }
+}
