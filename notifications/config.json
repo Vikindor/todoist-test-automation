@@ -15,8 +15,8 @@
     }
   },
   "telegram": {
-    "token": "8088117533:AAFgJ93fbbEUHMnMjx8346GYjjzVUbFAocw",
-    "chat": "-1002974137094",
+    "token": "<your_token>",
+    "chat": "<your_chat_id>>",
     "topic": "",
     "replyTo": "",
     "templatePath": "/templates/telegram.ftl"
