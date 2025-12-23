@@ -1,14 +1,21 @@
 <h1 align="center">
-Todoist Multi-Layer Test Automation<br>
+Todoist Multi-Layer Test Automation Framework<br>
 (API, Web UI, Android)
 <br><br>
 <a href="https://www.todoist.com/" target="_blank" rel="noopener noreferrer"><img width="50%" src="media/logos/todoist.png" alt="Todoist logo" title="Todoist"/></a>
 </h1>
 
+<h3>
+<p align="center">[
+  🇬🇧 <b>English</b> &nbsp;|&nbsp;
+  🇷🇺 <a href="docs/README_RU.md">Русский</a>
+]</p>
+</h3>
+
 Automated test automation project for a single product, covered consistently across **API**, **Web UI**, and **Android mobile** layers.
 
-The repository is designed as a **multi-module Gradle project** where each module represents an isolated test layer,
-while sharing common architectural principles, configuration patterns, and reporting approach.
+The repository is designed as a **multi-module Gradle project** where each module represents an isolated test layer, while sharing common architectural principles, configuration patterns, and reporting approach.
+
 
 # 📌 Table of Contents
 
@@ -16,25 +23,7 @@ while sharing common architectural principles, configuration patterns, and repor
 - [✨ Features](#-features)
 - [🧩 Repository structure](#-repository-structure)
 - [🚀 Running Tests](#-running-tests)
-  - [Run all tests (API + Web + Android)](#run-all-tests-api--web--android)
-  - [Run a specific test layer](#run-a-specific-test-layer)
-  - [Generate Allure report (aggregated)](#generate-allure-report-aggregated)
-  - [View results locally in browser](#view-results-locally-in-browser)
-  - [Send Allure report to Telegram](#send-allure-report-to-telegram)
-  - [Remote run in Jenkins](#remote-run-in-jenkins)
 - [🔌 Integrations](#-integrations)
-  - [Jenkins job](#jenkins-job)
-  - [Allure report](#allure-report)
-    - [Overview](#overview)
-    - [Mobile test](#mobile-test)
-    - [API test](#api-test)
-  - [Allure TestOps integration](#allure-testops-integration)
-    - [Dashboard](#dashboard)
-    - [Run details](#run-details)
-  - [Jira integration](#jira-integration)
-  - [Telegram report](#telegram-report)
-  - [Selenoid video](#selenoid-video)
-  - [Appium video](#appium-video)
 
 
 # 🛠 Tech stack
@@ -133,6 +122,7 @@ All modules:
 
 The root project acts as an orchestration layer and does not contain tests.
 
+
 # 🚀 Running Tests
 
 Each test layer can be executed independently or composed into a combined run using Gradle tasks.
@@ -143,7 +133,9 @@ Each test layer can be executed independently or composed into a combined run us
 
     ./gradlew clean test
 
-⚠️ With VM option for Android: `-Dplatform=emul-and` for emulator or `-Dplatform=real-and` for real device.
+⚠️ With VM option for Android:  
+`-Dplatform=emul-and` — for emulator  
+`-Dplatform=real-and` — for real device  
 
 Runs all test modules and produces a single aggregated Allure results set.
 
@@ -171,7 +163,8 @@ Runs all test modules and produces a single aggregated Allure results set.
 
 **BrowserStack**
 
-The project is BrowserStack-ready. To run tests on BrowserStack Android:
+The project is BrowserStack-ready.  
+To run tests on BrowserStack Android:
 
 - A properly signed `.apk` must be uploaded to the service before execution.
 - The application ID must be specified in `bs-and.properties`: `browserstack.app=bs://<app-id>`
@@ -183,7 +176,7 @@ Each module resolves its own configuration and execution environment independent
 
 ---
 
-## Generate Allure report (aggregated)
+## Generate aggregated Allure report
 
     ./gradlew allureReport
 
@@ -231,6 +224,7 @@ Build parameters:
 `BROWSER_VERSION` — Browser version used for test execution. Default: `128.0`  
 `BROWSER_SIZE` — Browser window size. Default: `1920x1080`  
 
+
 # 🔌 Integrations
 
 ## <img width="4%" src="media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/> Jenkins
@@ -259,7 +253,7 @@ The overview section displays overall execution statistics and test distribution
 
 ### Mobile test
 
-Mobile test details include step-level execution information and platform-specific diagnostics.
+Mobile test details contain step-level execution information and attachments (including video).
 
 <p align="center">
 <img width="100%" src="media/screenshots/allure_report_2.jpg" alt="Mobile test details screenshot" title="Mobile test details"/>
@@ -267,7 +261,7 @@ Mobile test details include step-level execution information and platform-specif
 
 ### API test
 
-API test details provide request/response visibility and execution context for backend validation.
+API test details provide request/response visibility and execution context for backend validation based on <a href="https://github.com/Vikindor/allure-report-templates" target="_blank" rel="noopener noreferrer">custom HTTP templates</a>.
 
 <p align="center">
 <img width="100%" src="media/screenshots/allure_report_3.jpg" alt="API test details screenshot" title="API test details"/>
