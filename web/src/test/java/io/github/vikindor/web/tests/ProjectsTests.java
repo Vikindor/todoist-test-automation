@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
 
 @Epic("Web")
@@ -59,8 +60,15 @@ public class ProjectsTests extends TestBase {
             projectPage()
                     .openProjectOptionsMenu()
                     .deleteProject();
+
+            step("Wait for backend to be ready for delete confirmation", () -> {
+                sleep(150);
+            });
+
             deleteProjectModal().clickDelete();
-            projectPage().shouldNotHaveProjectName(newName);
+            projectsPage()
+                    .openPage()
+                    .shouldNotHaveProject(newName);
         });
     }
 }
