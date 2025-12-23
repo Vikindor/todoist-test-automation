@@ -20,7 +20,7 @@ dependencies {
     testImplementation("io.qameta.allure:allure-selenide:2.31.0")
     testImplementation("io.rest-assured:rest-assured:5.5.6")
     testImplementation("io.qameta.allure:allure-rest-assured:2.31.0")
-    allureRawResultElements(files(layout.buildDirectory.dir("allure-results")))
+    allureRawResultElements(files(rootProject.layout.buildDirectory.dir("allure-results")))
     testImplementation("org.aeonbits.owner:owner:1.0.12")
     testImplementation("io.appium:java-client:10.0.0")
     testImplementation("commons-io:commons-io:2.21.0")
@@ -52,6 +52,11 @@ tasks.test {
             .associate { (k, v) -> k.toString() to v }
     )
 
+    systemProperty(
+        "allure.results.directory",
+        rootProject.layout.buildDirectory.dir("allure-results").get().asFile.absolutePath
+    )
+
     testLogging {
         events = setOf(
             TestLogEvent.STARTED,
@@ -69,4 +74,8 @@ tasks.test {
 
     jvmArgs("-Dfile.encoding=UTF-8", "-Dorg.slf4j.simpleLogger.logFile=System.out")
     environment("SE_AVOID_STATS", "true")
+}
+
+tasks.withType<Test>().configureEach {
+    dependsOn(rootProject.tasks.named("prepareAllureExecutor"))
 }
