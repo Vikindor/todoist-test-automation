@@ -34,23 +34,6 @@ public abstract class TestBase {
         Configuration.timeout = ConfigProvider.config().timeout();
     }
 
-    @BeforeAll
-    static void cleanAllureResults() {
-        try {
-            Path results = Paths.get(System.getProperty("user.dir"), "build", "allure-results");
-
-            if (Files.exists(results)) {
-                Files.walk(results)
-                     .filter(path -> !path.equals(results))
-                     .sorted(Comparator.reverseOrder())
-                     .map(Path::toFile)
-                     .forEach(File::delete);
-            }
-        } catch (Exception e) {
-            System.err.println("Failed to clean allure-results: " + e.getMessage());
-        }
-    }
-
     @BeforeEach
     void setUpTest(TestInfo testInfo) {
         String browserstackSessionName = testInfo.getDisplayName();
