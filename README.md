@@ -1,7 +1,8 @@
 <h1 align="center">
-Todoist Multi-Layer Test Automation
-
+Todoist Multi-Layer Test Automation<br>
 (API, Web UI, Android)
+<br><br>
+<a href="https://www.todoist.com/" target="_blank" rel="noopener noreferrer"><img width="50%" src="media/logos/todoist.png" alt="Todoist logo" title="Todoist"/></a>
 </h1>
 
 Automated test automation project for a single product, covered consistently across **API**, **Web UI**, and **Android mobile** layers.
