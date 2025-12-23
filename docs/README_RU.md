@@ -3,7 +3,7 @@
 сервиса Todoist<br>
 (API, Web UI, Android)
 <br><br>
-<a href="https://www.todoist.com/" target="_blank" rel="noopener noreferrer"><img width="50%" src="media/logos/todoist.png" alt="Todoist logo" title="Todoist"/></a>
+<a href="https://www.todoist.com/" target="_blank" rel="noopener noreferrer"><img width="50%" src="../media/logos/todoist.png" alt="Todoist logo" title="Todoist"/></a>
 </h1>
 
 <h3>
@@ -30,23 +30,23 @@
 # 🛠 Технологический стек
 
 <p align="center">
-  <a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/intellij_idea.png" alt="IntelliJ IDEA logo" title="IntelliJ IDEA"/></a>
-  <a href="https://developer.android.com/studio" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/android_studio.png" alt="Android Studio logo" title="Android Studio"/></a>
-  <a href="https://gradle.org/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/gradle.png" alt="Gradle logo" title="Gradle"/></a>
-  <a href="https://www.java.com/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/java.png" alt="Java logo" title="Java"/></a>
-  <a href="https://selenide.org/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/selenide.png" alt="Selenide logo" title="Selenide"/></a>
-  <a href="https://junit.org/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/junit.png" alt="JUnit logo" title="JUnit 5"/></a>
-  <a href="https://aerokube.com/selenoid/latest/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/selenoid.png" alt="Selenoid logo" title="Selenoid"/></a>
-  <a href="https://appium.io/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/appium.png" alt="Appium logo" title="Appium"/></a>
-  <a href="https://appium.github.io/appium-inspector/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/appium_inspector.png" alt="Appium Inspector logo" title="Appium Inspector"/></a>
-  <a href="https://www.browserstack.com/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/browserstack.png" alt="BrowserStack logo" title="BrowserStack"/></a>
-  <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/git.png" alt="Git logo" title="Git"/></a>
-  <a href="https://github.com/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/github.png" alt="GitHub logo" title="GitHub"/></a>
-  <a href="https://qameta.io/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/></a>
-  <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/telegram.png" alt="Telegram logo" title="Telegram"/></a>
-  <a href="https://www.jenkins.io/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/></a>
-  <a href="https://qameta.io/" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/allure_testops.png" alt="Allure TestOps logo" title="Allure TestOps"/></a>
-  <a href="https://www.atlassian.com/software/jira" target="_blank" rel="noopener noreferrer"><img width="6%" src="media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/></a>
+  <a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/intellij_idea.png" alt="IntelliJ IDEA logo" title="IntelliJ IDEA"/></a>
+  <a href="https://developer.android.com/studio" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/android_studio.png" alt="Android Studio logo" title="Android Studio"/></a>
+  <a href="https://gradle.org/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/gradle.png" alt="Gradle logo" title="Gradle"/></a>
+  <a href="https://www.java.com/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/java.png" alt="Java logo" title="Java"/></a>
+  <a href="https://selenide.org/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/selenide.png" alt="Selenide logo" title="Selenide"/></a>
+  <a href="https://junit.org/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/junit.png" alt="JUnit logo" title="JUnit 5"/></a>
+  <a href="https://aerokube.com/selenoid/latest/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/selenoid.png" alt="Selenoid logo" title="Selenoid"/></a>
+  <a href="https://appium.io/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/appium.png" alt="Appium logo" title="Appium"/></a>
+  <a href="https://appium.github.io/appium-inspector/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/appium_inspector.png" alt="Appium Inspector logo" title="Appium Inspector"/></a>
+  <a href="https://www.browserstack.com/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/browserstack.png" alt="BrowserStack logo" title="BrowserStack"/></a>
+  <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/git.png" alt="Git logo" title="Git"/></a>
+  <a href="https://github.com/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/github.png" alt="GitHub logo" title="GitHub"/></a>
+  <a href="https://qameta.io/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/></a>
+  <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/telegram.png" alt="Telegram logo" title="Telegram"/></a>
+  <a href="https://www.jenkins.io/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/></a>
+  <a href="https://qameta.io/" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/allure_testops.png" alt="Allure TestOps logo" title="Allure TestOps"/></a>
+  <a href="https://www.atlassian.com/software/jira" target="_blank" rel="noopener noreferrer"><img width="6%" src="../media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/></a>
 </p>
 
 `+` <a href="https://github.com/matteobaccan/owner" target="_blank" rel="noopener noreferrer">БИБЛИОТЕКА OWNER</a>  
@@ -228,17 +228,17 @@ allureReport
 
 # 🔌 Интеграции
 
-## <img width="4%" src="media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/> Jenkins
+## <img width="4%" src="../media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/> Jenkins
 
 Проект запускается через Jenkins-джобу, которая выступает основной CI-точкой входа для выполнения автоматизированных тестов.
 
 Джоба отвечает за запуск тестов, передачу параметров выполнения, а также оркестрацию отчётности и пост-процессинговых шагов.
 
 <p align="center">
-<img width="100%" src="media/screenshots/jenkins_1.jpg" alt="Jenkins Job screenshot" title="Jenkins Job"/>
+<img width="100%" src="../media/screenshots/jenkins_1.jpg" alt="Jenkins Job screenshot" title="Jenkins Job"/>
 </p>
 
-## <img width="4%" src="media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/> Allure Report
+## <img width="4%" src="../media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/> Allure Report
 
 После выполнения тестов формируется единый Allure-отчёт, агрегирующий результаты всех тестовых слоёв.
 
@@ -249,7 +249,7 @@ allureReport
 Раздел отображает общую статистику выполнения и распределение тестов по слоям.
 
 <p align="center">
-<img width="100%" src="media/screenshots/allure_report_1.jpg" alt="Allure tests overview screenshot" title="Allure tests overview"/>
+<img width="100%" src="../media/screenshots/allure_report_1.jpg" alt="Allure tests overview screenshot" title="Allure tests overview"/>
 </p>
 
 ### Мобильные тесты
@@ -257,7 +257,7 @@ allureReport
 Информация по мобильным тестам включает детализированные шаги и приложения (в том числе видео).
 
 <p align="center">
-<img width="100%" src="media/screenshots/allure_report_2.jpg" alt="Mobile test details screenshot" title="Mobile test details"/>
+<img width="100%" src="../media/screenshots/allure_report_2.jpg" alt="Mobile test details screenshot" title="Mobile test details"/>
 </p>
 
 ### API тесты
@@ -265,10 +265,10 @@ allureReport
 Информация по API-тестам представлена на базе <a href="https://github.com/Vikindor/allure-report-templates" target="_blank" rel="noopener noreferrer">кастомных HTTP шаблонов</a>.
 
 <p align="center">
-<img width="100%" src="media/screenshots/allure_report_3.jpg" alt="API test details screenshot" title="API test details"/>
+<img width="100%" src="../media/screenshots/allure_report_3.jpg" alt="API test details screenshot" title="API test details"/>
 </p>
 
-## <img width="4%" src="media/logos/allure_testops.png" alt="Allure TestOps logo" title="Allure TestOps"/> Интеграция с Allure TestOps
+## <img width="4%" src="../media/logos/allure_testops.png" alt="Allure TestOps logo" title="Allure TestOps"/> Интеграция с Allure TestOps
 
 Pipeline сборки в Jenkins интегрирован с Allure TestOps для централизованного анализа выполнения тестов и отчётности.
 
@@ -280,7 +280,7 @@ Pipeline сборки в Jenkins интегрирован с Allure TestOps дл
 Дашборд отображает высокоуровневое состояние выполнения тестов, динамику и метрики качества по нескольким прогонам.
 
 <p align="center">
-<img width="100%" src="media/screenshots/testops_1.jpg" alt="Allure TestOps dashboard screenshot" title="Allure TestOps dashboard"/>
+<img width="100%" src="../media/screenshots/testops_1.jpg" alt="Allure TestOps dashboard screenshot" title="Allure TestOps dashboard"/>
 </p>
 
 ### Запуски
@@ -288,45 +288,45 @@ Pipeline сборки в Jenkins интегрирован с Allure TestOps дл
 Раздел с запусками содержит детализированную информацию о конкретном прогоне, включая результаты отдельных тестов и связанную метаинформацию.
 
 <p align="center">
-<img width="100%" src="media/screenshots/testops_2.jpg" alt="Allure TestOps dashboard screenshot" title="Allure TestOps dashboard"/>
+<img width="100%" src="../media/screenshots/testops_2.jpg" alt="Allure TestOps dashboard screenshot" title="Allure TestOps dashboard"/>
 </p>
 
-## <img width="4%" src="media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/> Интеграция с Jira
+## <img width="4%" src="../media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/> Интеграция с Jira
 
 Allure TestOps интегрирован с Jira для обеспечения трассируемости между автотестами и задачами разработки.
 
 Тест-кейсы и результаты их выполнения связываются с задачами в Jira, что позволяет сопоставлять покрытие тестами, статус выполнения и требования.
 
 <p align="center">
-<img width="100%" src="media/screenshots/jira_1.jpg" alt="Jira task screenshot" title="Jira task"/>
+<img width="100%" src="../media/screenshots/jira_1.jpg" alt="Jira task screenshot" title="Jira task"/>
 </p>
 
-## <img width="4%" src="media/logos/telegram.png" alt="Telegram logo" title="Telegram"/> Отчёт в Telegram
+## <img width="4%" src="../media/logos/telegram.png" alt="Telegram logo" title="Telegram"/> Отчёт в Telegram
 
 После завершения выполнения тестов сгенерированный Allure-отчёт обрабатывается инструментом Allure Notifications и отправляется в настроенный Telegram-канал.
 
 Уведомление содержит краткую сводку по прогону и предоставляет доступ к Allure-отчёту, делая результаты выполнения доступными вне CI-окружения.
 
 <p align="center">
-<img src="media/screenshots/telegram_report.jpg" alt="Telegram report screenshot" title="Telegram report"/>
+<img src="../media/screenshots/telegram_report.jpg" alt="Telegram report screenshot" title="Telegram report"/>
 </p>
 
-## <img width="4%" src="media/logos/selenoid.png" alt="Selenoid logo" title="Selenoid"/> Видео Selenoid
+## <img width="4%" src="../media/logos/selenoid.png" alt="Selenoid logo" title="Selenoid"/> Видео Selenoid
 
 Каждый прогон UI-тестов сопровождается видеозаписью, сделанной с помощью Selenoid.
 
 Видео прикладывается к соответствующему тесту в отчёте и может использоваться для последующего анализа.
 
 <p align="center">
-<img width="100%" src="media/video/selenoid.gif" alt="Selenoid recording gif" title="Selenoid recording"/>
+<img width="100%" src="../media/video/selenoid.gif" alt="Selenoid recording gif" title="Selenoid recording"/>
 </p>
 
-## <img width="4%" src="media/logos/appium.png" alt="Selenoid logo" title="Selenoid"/> Видео Appium
+## <img width="4%" src="../media/logos/appium.png" alt="Selenoid logo" title="Selenoid"/> Видео Appium
 
 Каждый прогон UI-тестов сопровождается видеозаписью, сделанной с помощью Appium.
 
 Видео прикладывается к соответствующему тесту в отчёте и может использоваться для последующего анализа.
 
 <p align="center">
-<img width="50%" src="media/video/appium.gif" alt="Appium recording gif" title="Appium recording"/>
+<img width="50%" src="../media/video/appium.gif" alt="Appium recording gif" title="Appium recording"/>
 </p>
