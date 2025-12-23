@@ -20,11 +20,6 @@ public class ProjectPage {
         return this;
     }
 
-    public ProjectPage shouldNotHaveProjectName(String projectName) {
-        projectTitleText.shouldNotHave(text(projectName)).shouldBe(visible);
-        return this;
-    }
-
     public ProjectPage openProjectOptionsMenu() {
         projectOptionsButton.click();
         return this;
