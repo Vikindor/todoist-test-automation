@@ -21,7 +21,7 @@ dependencies {
     testImplementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
     testImplementation("com.fasterxml.jackson.core:jackson-annotations:2.20")
     testImplementation("io.qameta.allure:allure-rest-assured:2.31.0")
-    allureRawResultElements(files(layout.buildDirectory.dir("allure-results")))
+    allureRawResultElements(files(rootProject.layout.buildDirectory.dir("allure-results")))
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testRuntimeOnly("org.slf4j:slf4j-simple:2.0.17")
 }
@@ -50,6 +50,11 @@ tasks.test {
             .associate { (k, v) -> k.toString() to v }
     )
 
+    systemProperty(
+        "allure.results.directory",
+        rootProject.layout.buildDirectory.dir("allure-results").get().asFile.absolutePath
+    )
+
     testLogging {
         events = setOf(
             TestLogEvent.STARTED,
@@ -67,4 +72,8 @@ tasks.test {
 
     jvmArgs("-Dfile.encoding=UTF-8", "-Dorg.slf4j.simpleLogger.logFile=System.out")
     environment("SE_AVOID_STATS", "true")
+}
+
+tasks.withType<Test>().configureEach {
+    dependsOn(rootProject.tasks.named("prepareAllureExecutor"))
 }
