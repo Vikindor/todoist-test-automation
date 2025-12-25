@@ -18,6 +18,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("com.codeborne:selenide:7.13.0")
     testImplementation("io.qameta.allure:allure-selenide:2.31.0")
+    testImplementation("io.rest-assured:rest-assured:5.5.6")
+    testImplementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
     allureRawResultElements(files(rootProject.layout.buildDirectory.dir("allure-results")))
     testImplementation("org.aeonbits.owner:owner:1.0.12")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
