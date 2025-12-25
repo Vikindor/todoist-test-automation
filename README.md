@@ -12,7 +12,7 @@ Todoist Multi-Layer Test Automation Framework<br>
 ]</p>
 </h3>
 
-Automated test automation project for a single product, covered consistently across **API**, **Web UI**, and **Android mobile** layers.
+Multi-layer test automation framework for Todoist app, covering **API**, **Web UI**, and **Android** layers.
 
 The repository is designed as a **multi-module Gradle project** where each module represents an isolated test layer, while sharing common architectural principles, configuration patterns, and reporting approach.
 
