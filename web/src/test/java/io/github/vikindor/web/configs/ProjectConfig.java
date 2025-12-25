@@ -10,4 +10,7 @@ public interface ProjectConfig extends Config {
 
     @Key("todoist.password")
     String todoistPassword();
+
+    @Key("todoist.device_id")
+    String todoistDeviceId();
 }
