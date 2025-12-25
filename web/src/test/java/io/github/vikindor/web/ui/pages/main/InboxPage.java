@@ -4,7 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class InboxPage {
 
@@ -12,11 +11,6 @@ public class InboxPage {
 
     private final TasksList tasksList =  new TasksList();
     private final TaskEditMenu taskEditMenu = new TaskEditMenu();
-
-    public InboxPage openPage() {
-        open("/app/inbox");
-        return this;
-    }
 
     public InboxPage clickAddTaskButton() {
         sidebarContainer.shouldBe(visible);
