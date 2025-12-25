@@ -1,6 +1,6 @@
 {
   "base": {
-    "logo": "notifications/todoist_logo1.png",
+    "logo": "notifications/todoist_logo.png",
     "project": "Todoist Test Automation",
     "environment": "Prod",
     "comment": "Ping @Vikindor",
