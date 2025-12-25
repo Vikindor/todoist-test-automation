@@ -6,12 +6,17 @@
 <a href="https://www.todoist.com/" target="_blank" rel="noopener noreferrer"><img width="50%" src="../media/logos/todoist.png" alt="Todoist banner" title="Todoist"/></a>
 </h1>
 
-<h3>
-<p align="center">[
-  🇬🇧 <a href="../README.md">English</a> &nbsp;|&nbsp;
-  🇷🇺 <b>Русский</b>
-]</p>
-</h2>
+<div align="center">
+
+[ 🇬🇧 [English](../README.md) | 🇷🇺 **Русский** ]
+
+</div>
+
+<div align="center">
+
+[![CodeFactor](https://www.codefactor.io/repository/github/vikindor/todoist-test-automation/badge)](https://www.codefactor.io/repository/github/vikindor/todoist-test-automation)
+
+</div>
 
 Проект по автоматизации тестирования продукта с покрытием на уровнях **API**, **Web UI** и **Android mobile**.
 
