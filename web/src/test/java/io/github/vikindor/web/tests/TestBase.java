@@ -2,7 +2,6 @@ package io.github.vikindor.web.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.github.vikindor.web.configs.ConfigProvider;
 import io.github.vikindor.web.helpers.AllureAttach;
 import io.github.vikindor.web.helpers.AuthHelper;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -11,14 +10,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Comparator;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static io.restassured.RestAssured.baseURI;
 
 public class TestBase {
 
@@ -37,13 +32,15 @@ public class TestBase {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+
+        baseURI = System.getProperty("baseUrl", "https://api.todoist.com/api/v1");
     }
 
     @BeforeEach
     void setUpTest() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        AuthHelper.login(ConfigProvider.config().todoistEmail(), ConfigProvider.config().todoistPassword());
+        AuthHelper.apiLoginAndStabilize();
     }
 
     @AfterEach
@@ -51,7 +48,10 @@ public class TestBase {
         AllureAttach.screenshot();
         AllureAttach.pageSource();
         AllureAttach.browserConsoleLogs();
-        AllureAttach.selenoidVideo();
+
+        if (Configuration.remote != null) {
+            AllureAttach.selenoidVideo();
+        }
 
         closeWebDriver();
     }
