@@ -19,8 +19,8 @@ import static io.qameta.allure.Allure.step;
 @DisplayName("Projects")
 public class ProjectsTests extends TestBase {
 
-    ProjectsPage projectsPage() { return new ProjectsPage(); }
-    ProjectPage projectPage() { return new ProjectPage(); }
+    ProjectsPage projects() { return new ProjectsPage(); }
+    ProjectPage project() { return new ProjectPage(); }
     ProjectModal projectModal() { return new ProjectModal(); }
     DeleteModal deleteProjectModal() { return new DeleteModal(); }
 
@@ -33,7 +33,7 @@ public class ProjectsTests extends TestBase {
         String newName = initialName + " updated";
 
         step("Create project", () -> {
-            projectsPage()
+            projects()
                     .openPage()
                     .clickAddButton()
                     .clickAddProject();
@@ -43,21 +43,21 @@ public class ProjectsTests extends TestBase {
         });
 
         step("Read project and verify actual name", () -> {
-            projectPage().shouldHaveProjectName(initialName);
+            project().shouldHaveProjectName(initialName);
         });
 
         step("Update project and verify updated name", () -> {
-            projectPage()
+            project()
                     .openProjectOptionsMenu()
                     .editProject();
             projectModal()
                     .setName(newName)
                     .clickSubmitButton();
-            projectPage().shouldHaveProjectName(newName);
+            project().shouldHaveProjectName(newName);
         });
 
         step("Delete task and verify it is deleted", () -> {
-            projectPage()
+            project()
                     .openProjectOptionsMenu()
                     .deleteProject();
 
@@ -66,7 +66,7 @@ public class ProjectsTests extends TestBase {
             });
 
             deleteProjectModal().clickDelete();
-            projectsPage()
+            projects()
                     .openPage()
                     .shouldNotHaveProject(newName);
         });
