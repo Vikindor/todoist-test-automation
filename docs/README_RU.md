@@ -255,7 +255,7 @@ allureReport
 Раздел отображает общую статистику выполнения и распределение тестов по слоям.
 
 <p align="center">
-<img width="100%" src="../media/screenshots/allure_report_1.jpg" alt="Allure tests overview screenshot" title="Allure tests overview"/>
+<img width="100%" src="../media/screenshots/allure_report_1.jpg" alt="Allure Report tests overview screenshot" title="Allure Report tests overview"/>
 </p>
 
 ### Мобильные тесты
@@ -263,7 +263,7 @@ allureReport
 Информация по мобильным тестам включает детализированные шаги и приложения (в том числе видео).
 
 <p align="center">
-<img width="100%" src="../media/screenshots/allure_report_2.jpg" alt="Mobile test details screenshot" title="Mobile test details"/>
+<img width="100%" src="../media/screenshots/allure_report_2.jpg" alt="Allure Report mobile test details screenshot" title="Allure Report mobile test details"/>
 </p>
 
 ### API тесты
@@ -271,7 +271,7 @@ allureReport
 Информация по API-тестам представлена на базе <a href="https://github.com/Vikindor/allure-report-templates" target="_blank" rel="noopener noreferrer">кастомных HTTP шаблонов</a>.
 
 <p align="center">
-<img width="100%" src="../media/screenshots/allure_report_3.jpg" alt="API test details screenshot" title="API test details"/>
+<img width="100%" src="../media/screenshots/allure_report_3.jpg" alt="Allure Report API test details screenshot" title="Allure Report API test details"/>
 </p>
 
 ## <img width="4%" src="../media/logos/allure_testops.png" alt="Allure TestOps logo" title="Allure TestOps"/> Интеграция с Allure TestOps
