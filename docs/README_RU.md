@@ -324,7 +324,7 @@ Allure TestOps интегрирован с Jira для обеспечения т
 Видео прикладывается к соответствующему тесту в отчёте и может использоваться для последующего анализа.
 
 <p align="center">
-<img width="100%" src="../media/video/selenoid.gif" alt="Selenoid recording gif" title="Selenoid recording"/>
+<img width="100%" src="../media/videos/selenoid.gif" alt="Selenoid recording gif" title="Selenoid recording"/>
 </p>
 
 ## <img width="4%" src="../media/logos/appium.png" alt="Selenoid logo" title="Selenoid"/> Видео Appium
@@ -334,5 +334,5 @@ Allure TestOps интегрирован с Jira для обеспечения т
 Видео прикладывается к соответствующему тесту в отчёте и может использоваться для последующего анализа.
 
 <p align="center">
-<img width="50%" src="../media/video/appium.gif" alt="Appium recording gif" title="Appium recording"/>
+<img width="50%" src="../media/videos/appium.gif" alt="Appium recording gif" title="Appium recording"/>
 </p>

@@ -323,7 +323,7 @@ Each UI test execution is accompanied by a video recording captured by Selenoid.
 The video is attached to the corresponding test case in the report and can be used for failure analysis and execution review.
 
 <p align="center">
-<img width="100%" src="media/video/selenoid.gif" alt="Selenoid recording gif" title="Selenoid recording"/>
+<img width="100%" src="media/videos/selenoid.gif" alt="Selenoid recording gif" title="Selenoid recording"/>
 </p>
 
 ## <img width="4%" src="media/logos/appium.png" alt="Selenoid logo" title="Selenoid"/> Appium video
@@ -333,5 +333,5 @@ Each Mobile UI test execution includes a video recording captured during the App
 The recording is attached to the test report and can be used to analyze application behavior and UI interactions during execution.
 
 <p align="center">
-<img width="50%" src="media/video/appium.gif" alt="Appium recording gif" title="Appium recording"/>
+<img width="50%" src="media/videos/appium.gif" alt="Appium recording gif" title="Appium recording"/>
 </p>
