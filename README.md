@@ -1,5 +1,5 @@
 <h1 align="center">
-Todoist Multi-Layer Test Automation Framework<br>
+Multi-Layer Test Automation Framework for Todoist app<br>
 (API, Web UI, Android)
 <br><br>
 <a href="https://www.todoist.com/" target="_blank" rel="noopener noreferrer"><img width="50%" src="media/logos/todoist.png" alt="Todoist banner" title="Todoist"/></a>
