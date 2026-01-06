@@ -39,8 +39,6 @@ public class TestBase {
     @BeforeEach
     void setUpTest() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
-        AuthHelper.apiLoginAndStabilize();
     }
 
     @AfterEach

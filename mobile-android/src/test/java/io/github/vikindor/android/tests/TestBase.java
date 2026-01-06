@@ -45,8 +45,6 @@ public abstract class TestBase {
 
         AndroidDriver driver = (AndroidDriver) WebDriverRunner.getWebDriver();
         driver.startRecordingScreen();
-
-        AuthHelper.login(ConfigProvider.config().todoistEmail(), ConfigProvider.config().todoistPassword());
     }
 
     @AfterEach
