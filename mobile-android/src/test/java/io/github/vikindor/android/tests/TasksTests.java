@@ -1,5 +1,6 @@
 package io.github.vikindor.android.tests;
 
+import io.github.vikindor.android.extensions.WithLogin;
 import io.github.vikindor.android.helpers.A;
 import io.github.vikindor.android.ui.components.*;
 import io.github.vikindor.android.ui.screens.main.InboxScreen;
@@ -15,6 +16,7 @@ import static io.qameta.allure.Allure.step;
 @Feature("Tasks")
 @Tag("mobile") @Tag("android") @Tag("tasks") @Tag("regression")
 @DisplayName("Tasks")
+@WithLogin
 public class TasksTests extends TestBase {
 
     InboxScreen inbox() { return new InboxScreen(); }

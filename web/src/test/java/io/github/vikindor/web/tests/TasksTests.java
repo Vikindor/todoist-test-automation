@@ -1,5 +1,6 @@
 package io.github.vikindor.web.tests;
 
+import io.github.vikindor.web.extensions.WithLogin;
 import io.github.vikindor.web.ui.components.DeleteModal;
 import io.github.vikindor.web.ui.components.QuickAddModal;
 import io.github.vikindor.web.ui.pages.main.InboxPage;
@@ -15,6 +16,7 @@ import static io.qameta.allure.Allure.step;
 @Feature("Tasks")
 @Tag("web") @Tag("tasks") @Tag("regression")
 @DisplayName("Tasks")
+@WithLogin
 public class TasksTests extends TestBase {
 
     InboxPage inbox() { return new InboxPage(); }

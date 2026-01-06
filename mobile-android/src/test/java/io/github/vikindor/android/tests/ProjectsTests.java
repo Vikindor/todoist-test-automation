@@ -1,5 +1,6 @@
 package io.github.vikindor.android.tests;
 
+import io.github.vikindor.android.extensions.WithLogin;
 import io.github.vikindor.android.helpers.A;
 import io.github.vikindor.android.ui.components.AlertDialog;
 import io.github.vikindor.android.ui.components.NavigationBar;
@@ -19,6 +20,7 @@ import static io.qameta.allure.Allure.step;
 @Feature("Projects")
 @Tag("mobile") @Tag("android") @Tag("projects") @Tag("regression")
 @DisplayName("Projects")
+@WithLogin
 public class ProjectsTests extends TestBase {
 
     NavigationBar navigationBar() { return new NavigationBar(); }

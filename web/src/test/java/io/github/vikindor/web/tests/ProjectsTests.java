@@ -1,5 +1,6 @@
 package io.github.vikindor.web.tests;
 
+import io.github.vikindor.web.extensions.WithLogin;
 import io.github.vikindor.web.ui.components.ProjectModal;
 import io.github.vikindor.web.ui.components.DeleteModal;
 import io.github.vikindor.web.ui.pages.projects.ProjectPage;
@@ -17,6 +18,7 @@ import static io.qameta.allure.Allure.step;
 @Feature("Projects")
 @Tag("web")  @Tag("projects") @Tag("regression")
 @DisplayName("Projects")
+@WithLogin
 public class ProjectsTests extends TestBase {
 
     ProjectsPage projects() { return new ProjectsPage(); }
