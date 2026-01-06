@@ -293,7 +293,7 @@ The dashboard presents a high-level view of test execution status, trends, and q
 Run details provide granular information about a specific execution, including individual test results and related metadata.
 
 <p align="center">
-<img width="100%" src="media/screenshots/testops_2.jpg" alt="Allure TestOps dashboard screenshot" title="Allure TestOps dashboard"/>
+<img width="100%" src="media/screenshots/testops_2.jpg" alt="Allure TestOps run details screenshot" title="Allure TestOps run details"/>
 </p>
 
 ## <img width="4%" src="media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/> Jira integration

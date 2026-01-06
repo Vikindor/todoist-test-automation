@@ -294,7 +294,7 @@ Pipeline сборки в Jenkins интегрирован с Allure TestOps дл
 Раздел с запусками содержит детализированную информацию о конкретном прогоне, включая результаты отдельных тестов и связанную метаинформацию.
 
 <p align="center">
-<img width="100%" src="../media/screenshots/testops_2.jpg" alt="Allure TestOps dashboard screenshot" title="Allure TestOps dashboard"/>
+<img width="100%" src="../media/screenshots/testops_2.jpg" alt="Allure TestOps run details screenshot" title="Allure TestOps run details"/>
 </p>
 
 ## <img width="4%" src="../media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/> Интеграция с Jira
