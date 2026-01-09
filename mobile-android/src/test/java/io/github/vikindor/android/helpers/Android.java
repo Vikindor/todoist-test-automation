@@ -7,25 +7,18 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 
 public final class Android {
 
-    private Android() {}
+    private Android() {
+    }
 
     private static AndroidDriver driver() {
         return (AndroidDriver) WebDriverRunner.getWebDriver();
     }
 
+    public static String getCurrentPackage() {
+        return driver().getCurrentPackage();
+    }
+
     public static void back() {
         driver().pressKey(new KeyEvent(AndroidKey.BACK));
-    }
-
-    public static void home() {
-        driver().pressKey(new KeyEvent(AndroidKey.HOME));
-    }
-
-    public static void appSwitch() {
-        driver().pressKey(new KeyEvent(AndroidKey.APP_SWITCH));
-    }
-
-    public static void activateApp(String appPackage) {
-        driver().activateApp(appPackage);
     }
 }
