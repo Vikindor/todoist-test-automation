@@ -23,7 +23,6 @@ public class ProjectsTests extends TestBase {
     @Tag("smoke")
     @DisplayName("Project CRUD lifecycle")
     void shouldCreateReadUpdateAndDeleteProject() {
-
         String initialName = "Test Project " + System.currentTimeMillis();
         String newName = initialName + " updated";
 
@@ -86,7 +85,6 @@ public class ProjectsTests extends TestBase {
     @Tag("negative")
     @DisplayName("Error when creating project without name")
     void shouldNotCreateProjectWithoutName() {
-
         ErrorResponse errorResponse = step("Create project with empty name", () ->
                 createProject(authSpec(), "")
                         .then()
@@ -121,7 +119,6 @@ public class ProjectsTests extends TestBase {
     @Tag("regression")
     @DisplayName("DELETE method is idempotent")
     void shouldDeleteProjectIdempotently() {
-
         String initialName = "Test Project " + System.currentTimeMillis();
 
         ProjectResponse createdProject = step("Create project", () ->

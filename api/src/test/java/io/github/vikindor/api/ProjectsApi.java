@@ -8,7 +8,6 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 public class ProjectsApi {
-
     private static final String PROJECTS = "/projects";
     private static final String PROJECT_BY_ID = "/projects/{id}";
 

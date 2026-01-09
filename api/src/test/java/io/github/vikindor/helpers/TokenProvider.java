@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class TokenProvider {
-
     private static final String FILE = "auth.properties";
     private static final String TOKEN = "accessToken";
 
