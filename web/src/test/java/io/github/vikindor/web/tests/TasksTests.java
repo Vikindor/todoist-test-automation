@@ -35,7 +35,6 @@ public class TasksTests extends TestBase {
     @Tag("smoke")
     @DisplayName("Tasks CRUD lifecycle")
     void shouldCreateReadUpdateAndDeleteTask() {
-
         String initialName = "Test Task " + System.currentTimeMillis();
         String newName = initialName + " updated";
 
@@ -71,7 +70,6 @@ public class TasksTests extends TestBase {
     @Tag("smoke")
     @DisplayName("Task can be completed")
     void shouldCompleteTask() {
-
         String taskName = "Test Task " + System.currentTimeMillis();
 
         step("Create task", () -> {

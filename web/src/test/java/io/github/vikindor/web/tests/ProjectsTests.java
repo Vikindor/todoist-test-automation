@@ -41,7 +41,6 @@ public class ProjectsTests extends TestBase {
     @Tag("smoke")
     @DisplayName("Projects CRUD lifecycle")
     void shouldCreateReadUpdateAndDeleteProject() {
-
         String initialName = "Test Project " + System.currentTimeMillis();
         String newName = initialName + " updated";
 
