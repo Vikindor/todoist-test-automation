@@ -1,0 +1,179 @@
+package io.github.vikindor.web.tests;
+
+import io.github.vikindor.web.configs.ProjectConfig;
+import io.github.vikindor.web.ui.pages.auth.*;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+import static io.qameta.allure.Allure.step;
+
+@Epic("Web")
+@Feature("Login")
+@Tag("web")
+@Tag("login")
+@Tag("regression")
+@DisplayName("Login")
+public class LoginTests extends TestBase {
+
+    private static final ProjectConfig config = ConfigFactory.create(ProjectConfig.class);
+
+    LoginPage loginPage() {
+        return new LoginPage();
+    }
+
+    ForgotPasswordPage forgotPasswordPage() {
+        return new ForgotPasswordPage();
+    }
+
+    SignUpPage signUpPage() {
+        return new SignUpPage();
+    }
+
+    GooglePage googlePage() {
+        return new GooglePage();
+    }
+
+    FacebookPage facebookPage() {
+        return new FacebookPage();
+    }
+
+    ApplePage applePage() {
+        return new ApplePage();
+    }
+
+    @Test
+    @Tag("smoke")
+    @DisplayName("Email validation error is shown for invalid email")
+    void shouldShowEmailValidationError() {
+        String randomInvalidEmail = System.currentTimeMillis() + "@123";
+        String randomInvalidPassword = String.valueOf(System.currentTimeMillis()).substring(0, 8);
+
+        step("Submit invalid email and password", () -> {
+            loginPage()
+                    .openPage()
+                    .setEmail(randomInvalidEmail)
+                    .setPassword(randomInvalidPassword)
+                    .clickLogInButton();
+        });
+
+        step("Verify email validation error", () -> {
+            loginPage().shouldShowEmailValidationError();
+        });
+    }
+
+    @Test
+    @Tag("smoke")
+    @DisplayName("Password validation error is shown for empty password")
+    void shouldShowPasswordValidationError() {
+        String randomInvalidEmail = System.currentTimeMillis() + "@123";
+
+        step("Submit email with empty password", () -> {
+            loginPage()
+                    .openPage()
+                    .setEmail(randomInvalidEmail)
+                    .clickLogInButton();
+        });
+
+        step("Verify password validation error", () -> {
+            loginPage().shouldShowPasswordValidationError();
+        });
+    }
+
+    @Test
+    @Tag("regression")
+    @DisplayName("Error is shown for wrong password")
+    void shouldShowWrongEmailOrPasswordError() {
+        String randomInvalidPassword = String.valueOf(System.currentTimeMillis()).substring(0, 8);
+
+        step("Submit valid email with invalid password", () -> {
+            loginPage()
+                    .openPage()
+                    .setEmail(config.todoistEmail())
+                    .setPassword(randomInvalidPassword)
+                    .clickLogInButton();
+        });
+
+        step("Verify wrong email/password error", () -> {
+            loginPage().shouldShowWrongEmailOrPasswordError();
+        });
+    }
+
+    @Test
+    @Tag("smoke")
+    @DisplayName("User can navigate to Forgot password page from Login")
+    void shouldNavigateToForgotPasswordPage() {
+        step("Navigate to Forgot password page", () -> {
+            loginPage()
+                    .openPage()
+                    .clickForgotPasswordLink();
+        });
+
+        step("Verify page title", () -> {
+            forgotPasswordPage().shouldHaveTitle();
+        });
+    }
+
+    @Test
+    @Tag("smoke")
+    @DisplayName("User can navigate to Sign up page from Login")
+    void shouldNavigateToSignUpPage() {
+        step("Navigate to Sign up page", () -> {
+            loginPage()
+                    .openPage()
+                    .clickSignUpLink();
+        });
+
+        step("Verify page title", () -> {
+            signUpPage().shouldHaveTitle();
+        });
+    }
+
+    @Test
+    @Tag("smoke")
+    @DisplayName("User can navigate to Google sign in page from Login")
+    void shouldNavigateToGoogleSignInPage() {
+        step("Navigate to Google sign in page", () -> {
+            loginPage()
+                    .openPage()
+                    .clickGoogleButton();
+        });
+
+        step("Verify Google sign in frame", () -> {
+            googlePage().shouldHaveIFrame();
+        });
+    }
+
+    @Test
+    @Tag("smoke")
+    @DisplayName("User can navigate to Facebook sign in page from Login")
+    void shouldNavigateToFacebookSignInPage() {
+        step("Navigate to Facebook sign in page", () -> {
+            loginPage()
+                    .openPage()
+                    .clickFacebookButton();
+        });
+
+        step("Verify Facebook title", () -> {
+            facebookPage().shouldHaveTitle();
+        });
+    }
+
+    @Test
+    @Tag("smoke")
+    @DisplayName("User can navigate to Apple sign in page from Login")
+    void shouldNavigateToAppleSignInPage() {
+        step("Navigate to Apple sign in page", () -> {
+            loginPage()
+                    .openPage()
+                    .clickAppleButton();
+        });
+
+        step("Verify Apple page", () -> {
+            applePage().shouldBeOpened();
+        });
+    }
+}
