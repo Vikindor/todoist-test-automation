@@ -104,7 +104,7 @@ public class LoginTests extends TestBase {
 
     @Test
     @Tag("smoke")
-    @DisplayName("User can navigate to Forgot password page from Login")
+    @DisplayName("User can navigate to Forgot password page from Login page")
     void shouldNavigateToForgotPasswordPage() {
         step("Navigate to Forgot password page", () -> {
             loginPage()
@@ -119,7 +119,7 @@ public class LoginTests extends TestBase {
 
     @Test
     @Tag("smoke")
-    @DisplayName("User can navigate to Sign up page from Login")
+    @DisplayName("User can navigate to Sign up page from Login page")
     void shouldNavigateToSignUpPage() {
         step("Navigate to Sign up page", () -> {
             loginPage()
@@ -134,7 +134,7 @@ public class LoginTests extends TestBase {
 
     @Test
     @Tag("smoke")
-    @DisplayName("User can navigate to Google sign in page from Login")
+    @DisplayName("User can navigate to Google sign in page from Login page")
     void shouldNavigateToGoogleSignInPage() {
         step("Navigate to Google sign in page", () -> {
             loginPage()
@@ -149,7 +149,7 @@ public class LoginTests extends TestBase {
 
     @Test
     @Tag("smoke")
-    @DisplayName("User can navigate to Facebook sign in page from Login")
+    @DisplayName("User can navigate to Facebook sign in page from Login page")
     void shouldNavigateToFacebookSignInPage() {
         step("Navigate to Facebook sign in page", () -> {
             loginPage()
@@ -164,7 +164,7 @@ public class LoginTests extends TestBase {
 
     @Test
     @Tag("smoke")
-    @DisplayName("User can navigate to Apple sign in page from Login")
+    @DisplayName("User can navigate to Apple sign in page from Login page")
     void shouldNavigateToAppleSignInPage() {
         step("Navigate to Apple sign in page", () -> {
             loginPage()
