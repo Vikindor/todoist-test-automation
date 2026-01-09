@@ -1,4 +1,4 @@
-package io.github.vikindor.android.helpers;
+package io.github.vikindor.android.utils;
 
 import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.android.AndroidDriver;
@@ -54,7 +54,6 @@ public class AllureAttach {
     }
 
     private static String getBrowserStackVideoUrl(String sessionId) {
-
         String url = String.format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
 
         return given()
