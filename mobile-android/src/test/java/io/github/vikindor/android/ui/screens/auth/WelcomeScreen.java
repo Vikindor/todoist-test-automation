@@ -1,4 +1,4 @@
-package io.github.vikindor.android.ui.screens.onboarding;
+package io.github.vikindor.android.ui.screens.auth;
 
 import com.codeborne.selenide.SelenideElement;
 
@@ -11,7 +11,11 @@ public class WelcomeScreen {
             continueWithEmailButton =
             $(androidUIAutomator("new UiSelector().className(\"android.widget.Button\").instance(0)")),
             loginWithEmailButton =
-            $(androidUIAutomator("new UiSelector().className(\"android.view.View\").instance(4)"));
+            $(androidUIAutomator("new UiSelector().className(\"android.view.View\").instance(4)")),
+            continueWithGoogleButton =
+            $(androidUIAutomator("new UiSelector().className(\"android.widget.Button\").instance(1)")),
+            continueWithFacebookButton =
+            $(androidUIAutomator("new UiSelector().className(\"android.widget.Button\").instance(2)"));
 
     public WelcomeScreen tapContinueWithEmailButton() {
         continueWithEmailButton.click();
@@ -21,5 +25,13 @@ public class WelcomeScreen {
     public WelcomeScreen tapLoginWithEmailButton() {
         loginWithEmailButton.click();
         return this;
+    }
+
+    public void tapContinueWithGoogleButton() {
+        continueWithGoogleButton.click();
+    }
+
+    public void tapContinueWithFacebookButton() {
+        continueWithFacebookButton.click();
     }
 }
