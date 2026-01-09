@@ -7,19 +7,12 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.appium.java_client.android.AndroidDriver;
 import io.github.vikindor.android.configs.ConfigProvider;
 import io.github.vikindor.android.drivers.MobileDriver;
-import io.github.vikindor.android.helpers.AllureAttach;
-import io.github.vikindor.android.helpers.AuthHelper;
+import io.github.vikindor.android.utils.AllureAttach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Comparator;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -37,6 +30,7 @@ public abstract class TestBase {
     @BeforeEach
     void setUpTest(TestInfo testInfo) {
         String browserstackSessionName = testInfo.getDisplayName();
+
         System.setProperty("browserstack.session.name", browserstackSessionName);
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
@@ -61,7 +55,7 @@ public abstract class TestBase {
 
         closeWebDriver();
 
-        if (platform.equals(BS_ANDROID) || platform.equals(BS_IOS)) {
+        if (platform.equals(BS_ANDROID)) {
             AllureAttach.browserStackVideo(sessionId);
         }
     }
