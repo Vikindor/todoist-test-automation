@@ -11,13 +11,13 @@ public class EditProjectScreen {
             nameInput = $(id("com.todoist:id/name")),
             doneButton = $(id("com.todoist:id/menu_form_submit"));
 
-    public EditProjectScreen setName(String name){
+    public EditProjectScreen setName(String name) {
         nameInput.click();
         nameInput.sendKeys(name);
         return this;
     }
 
-    public EditProjectScreen tapDone(){
+    public EditProjectScreen tapDone() {
         doneButton.click();
         return this;
     }

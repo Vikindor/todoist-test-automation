@@ -12,20 +12,22 @@ import java.util.stream.Collectors;
 
 /**
  * Utility to detect connected Android devices via adb.
- *
+ * <p>
  * Behavior:
  * - attempts to locate the adb executable (PATH, ANDROID_HOME, ANDROID_SDK_ROOT, common SDK paths)
  * - ignores devices whose id starts with "emulator"
  * - if multiple physical devices are present, returns the first one
- *
+ * <p>
  * This class is standalone and does not depend on ConfigProvider.
  */
-public final class AdbDeviceDetector {
 
-    private AdbDeviceDetector() {}
+public final class AdbDeviceDetector {
 
     private static final Duration ADB_TIMEOUT = Duration.ofSeconds(5);
     private static volatile String RESOLVED_ADB = null;
+
+    private AdbDeviceDetector() {
+    }
 
     public static DeviceInfo detectDeviceInfo() {
         String deviceId = firstPhysicalDeviceId();
@@ -40,56 +42,40 @@ public final class AdbDeviceDetector {
             throw new RuntimeException("adb command timed out. Is adb available and responsive?");
         }
         if (res.exitCode != 0) {
-            throw new RuntimeException("adb returned non-zero exit code: " + res.exitCode
-                    + ". stderr: " + safe(res.stderr));
+            throw new RuntimeException("adb returned non-zero exit code: " + res.exitCode + ". stderr: " + safe(res.stderr));
         }
 
-        List<String> lines = Arrays.stream(res.stdout.split("\\R"))
-                                   .map(String::trim)
-                                   .filter(line -> !line.isEmpty())
-                                   .collect(Collectors.toList());
+        List<String> lines = Arrays.stream(res.stdout.split("\\R")).map(String::trim).filter(line -> !line.isEmpty()).collect(Collectors.toList());
 
         if (lines.isEmpty()) {
             throw new RuntimeException("No output from 'adb devices'. ADB was invoked but produced no output.");
         }
 
-        List<String> deviceLines = lines.stream()
-                                        .filter(line -> !line.toLowerCase().startsWith("list of devices"))
-                                        .collect(Collectors.toList());
+        List<String> deviceLines = lines.stream().filter(line -> !line.toLowerCase().startsWith("list of devices")).collect(Collectors.toList());
 
-        Optional<String> firstPhysical = deviceLines.stream()
-                                                    .filter(line -> line.endsWith("\tdevice") || line.matches("^\\S+\\s+device$"))
-                                                    .map(line -> {
-                                                        String cleaned = line.replace("\t", " ").trim();
-                                                        return cleaned.split("\\s+")[0];
-                                                    })
-                                                    .filter(id -> !id.startsWith("emulator"))
-                                                    .findFirst();
+        Optional<String> firstPhysical = deviceLines.stream().filter(line -> line.endsWith("\tdevice") || line.matches("^\\S+\\s+device$")).map(line -> {
+            String cleaned = line.replace("\t", " ").trim();
+            return cleaned.split("\\s+")[0];
+        }).filter(id -> !id.startsWith("emulator")).findFirst();
 
         if (firstPhysical.isPresent()) {
             return firstPhysical.get();
         }
 
-        Optional<String> fallback = deviceLines.stream()
-                                               .map(line -> {
-                                                   String cleaned = line.replace("\t", " ").trim();
-                                                   String[] parts = cleaned.split("\\s+");
-                                                   return parts.length > 0 ? parts[0] : "";
-                                               })
-                                               .filter(id -> !id.isEmpty() && !id.startsWith("emulator"))
-                                               .findFirst();
+        Optional<String> fallback = deviceLines.stream().map(line -> {
+            String cleaned = line.replace("\t", " ").trim();
+            String[] parts = cleaned.split("\\s+");
+            return parts.length > 0 ? parts[0] : "";
+        }).filter(id -> !id.isEmpty() && !id.startsWith("emulator")).findFirst();
 
         if (fallback.isPresent()) {
             return fallback.get();
         }
 
-        boolean hasEmu = deviceLines.stream()
-                                    .map(line -> line.replace("\t", " ").trim().split("\\s+")[0])
-                                    .anyMatch(id -> id.startsWith("emulator"));
+        boolean hasEmu = deviceLines.stream().map(line -> line.replace("\t", " ").trim().split("\\s+")[0]).anyMatch(id -> id.startsWith("emulator"));
 
         if (hasEmu) {
-            throw new NoPhysicalDeviceException("No physical adb device found, only emulators are connected. " +
-                    "If you want to use an emulator, run the tests with the appropriate parameter.");
+            throw new NoPhysicalDeviceException("No physical adb device found, only emulators are connected. " + "If you want to use an emulator, run the tests with the appropriate parameter.");
         }
 
         throw new RuntimeException("No physical adb device found and no usable devices in 'adb devices' output.");
@@ -114,9 +100,7 @@ public final class AdbDeviceDetector {
             if (!sdk.isEmpty()) return sdk;
         }
 
-        throw new RuntimeException("Could not determine platform version for device " + deviceId
-                + ". stdout1: " + safe(r1.stdout) + " stderr1: " + safe(r1.stderr)
-                + " stdout2: " + safe(r2.stdout) + " stderr2: " + safe(r2.stderr));
+        throw new RuntimeException("Could not determine platform version for device " + deviceId + ". stdout1: " + safe(r1.stdout) + " stderr1: " + safe(r1.stderr) + " stdout2: " + safe(r2.stdout) + " stderr2: " + safe(r2.stderr));
     }
 
     private static String resolveAdb() {
@@ -128,7 +112,8 @@ public final class AdbDeviceDetector {
                 RESOLVED_ADB = "adb";
                 return RESOLVED_ADB;
             }
-        } catch (RuntimeException ignored) {}
+        } catch (RuntimeException ignored) {
+        }
 
         String androidHome = System.getenv("ANDROID_HOME");
         if (androidHome != null && !androidHome.trim().isEmpty()) {
@@ -149,14 +134,8 @@ public final class AdbDeviceDetector {
         }
 
         String userHome = System.getProperty("user.home");
-        String[] common = new String[]{
-                join(userHome, "Android", "Sdk", "platform-tools", executableName()),
-                join(userHome, "AppData", "Local", "Android", "Sdk", "platform-tools", executableName()), // windows common
-                "/usr/local/android-sdk/platform-tools/" + executableName(),
-                "/opt/android-sdk/platform-tools/" + executableName(),
-                "/usr/bin/" + executableName(),
-                "C:\\Android\\platform-tools\\" + executableName()
-        };
+        String[] common = new String[]{join(userHome, "Android", "Sdk", "platform-tools", executableName()), join(userHome, "AppData", "Local", "Android", "Sdk", "platform-tools", executableName()), // windows common
+                "/usr/local/android-sdk/platform-tools/" + executableName(), "/opt/android-sdk/platform-tools/" + executableName(), "/usr/bin/" + executableName(), "C:\\Android\\platform-tools\\" + executableName()};
 
         for (String path : common) {
             if (path != null && new File(path).exists()) {
@@ -197,8 +176,7 @@ public final class AdbDeviceDetector {
             ProcessBuilder pb = new ProcessBuilder(command);
             p = pb.start();
 
-            try (BufferedReader out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                 BufferedReader err = new BufferedReader(new InputStreamReader(p.getErrorStream()))) {
+            try (BufferedReader out = new BufferedReader(new InputStreamReader(p.getInputStream())); BufferedReader err = new BufferedReader(new InputStreamReader(p.getErrorStream()))) {
 
                 long start = System.currentTimeMillis();
                 while (p.isAlive()) {
@@ -250,6 +228,7 @@ public final class AdbDeviceDetector {
         final String stderr;
         final int exitCode;
         final boolean timedOut;
+
         CommandResult(String stdout, String stderr, int exitCode, boolean timedOut) {
             this.stdout = stdout == null ? "" : stdout;
             this.stderr = stderr == null ? "" : stderr;

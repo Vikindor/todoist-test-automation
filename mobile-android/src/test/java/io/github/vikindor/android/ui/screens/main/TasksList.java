@@ -29,7 +29,9 @@ public class TasksList {
         ));
     }
 
-    void shouldContainTask(String taskName) { taskName(taskName).shouldBe(visible); }
+    void shouldContainTask(String taskName) {
+        taskName(taskName).shouldBe(visible);
+    }
 
     void shouldNotContainTask(String taskName) {
         taskName(taskName).shouldNotBe(visible);
