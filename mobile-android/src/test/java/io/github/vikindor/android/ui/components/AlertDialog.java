@@ -7,14 +7,7 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class AlertDialog {
 
-    private final SelenideElement
-            cancelButton = $(id("android:id/button2")),
-            deleteButton = $(id("android:id/button1"));
-
-    public AlertDialog tapCancel() {
-        cancelButton.click();
-        return this;
-    }
+    private final SelenideElement deleteButton = $(id("android:id/button1"));
 
     public AlertDialog tapDelete() {
         deleteButton.click();
