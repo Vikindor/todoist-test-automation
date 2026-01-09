@@ -3,6 +3,8 @@ package io.github.vikindor.web.ui.pages.auth;
 import com.codeborne.selenide.SelenideElement;
 import io.github.vikindor.web.ui.pages.main.InboxPage;
 
+import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage {
@@ -10,10 +12,21 @@ public class LoginPage {
     private final SelenideElement
             emailInput = $("input[type='email']"),
             passwordInput = $("input[type='password']"),
-            logInButton = $("button[type='submit']");
+            logInButton = $("button[type='submit']"),
+            emailValidationError =
+                    $("form").$$("div").findBy(exactText("Please enter a valid email address.")),
+            passwordValidationError =
+                    $("form").$$("p").findBy(exactText("Passwords must be at least 8 characters long.")),
+            wrongEmailOrPasswordError = $("form").$$("div").findBy(exactText("Wrong email or password.")),
+            forgotPasswordLink = $$("a").findBy(exactText("Forgot your password?")),
+            signUpLink = $$("a").findBy(exactText("Sign up")),
+            continueWithGoogleButton = $$("a").findBy(exactText("Continue with Google")),
+            continueWithFacebookButton = $$("a").findBy(exactText("Continue with Facebook")),
+            continueWithAppleButton = $$("a").findBy(exactText("Continue with Apple"));
 
-    public void openPage() {
+    public LoginPage openPage() {
         open("/auth/login");
+        return this;
     }
 
     public LoginPage setEmail(String email) {
@@ -30,6 +43,46 @@ public class LoginPage {
         logInButton.click();
         waitForAuthStabilization();
         return new InboxPage();
+    }
+
+    public ForgotPasswordPage clickForgotPasswordLink() {
+        forgotPasswordLink.click();
+        return new ForgotPasswordPage();
+    }
+
+    public SignUpPage clickSignUpLink() {
+        signUpLink.click();
+        return new SignUpPage();
+    }
+
+    public GooglePage clickGoogleButton() {
+        continueWithGoogleButton.click();
+        return new GooglePage();
+    }
+
+    public FacebookPage clickFacebookButton() {
+        continueWithFacebookButton.click();
+        return new FacebookPage();
+    }
+
+    public ApplePage clickAppleButton() {
+        continueWithAppleButton.click();
+        return new ApplePage();
+    }
+
+    public LoginPage shouldShowEmailValidationError() {
+        emailValidationError.shouldBe(visible);
+        return this;
+    }
+
+    public LoginPage shouldShowPasswordValidationError() {
+        passwordValidationError.shouldBe(visible);
+        return this;
+    }
+
+    public LoginPage shouldShowWrongEmailOrPasswordError() {
+        wrongEmailOrPasswordError.shouldBe(visible);
+        return this;
     }
 
     private static void waitForAuthStabilization() {
