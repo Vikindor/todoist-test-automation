@@ -19,6 +19,7 @@ dependencies {
     testImplementation("com.codeborne:selenide:7.13.0")
     testImplementation("io.qameta.allure:allure-selenide:2.31.0")
     testImplementation("io.rest-assured:rest-assured:5.5.6")
+    testImplementation("org.assertj:assertj-core:3.27.6")
     testImplementation("io.qameta.allure:allure-rest-assured:2.31.0")
     allureRawResultElements(files(rootProject.layout.buildDirectory.dir("allure-results")))
     testImplementation("org.aeonbits.owner:owner:1.0.12")
