@@ -1,7 +1,7 @@
 package io.github.vikindor.android.tests;
 
 import io.github.vikindor.android.extensions.WithLogin;
-import io.github.vikindor.android.helpers.A;
+import io.github.vikindor.android.helpers.Android;
 import io.github.vikindor.android.ui.components.AlertDialog;
 import io.github.vikindor.android.ui.components.NavigationBar;
 import io.github.vikindor.android.ui.screens.main.BrowseScreen;
@@ -23,12 +23,29 @@ import static io.qameta.allure.Allure.step;
 @WithLogin
 public class ProjectsTests extends TestBase {
 
-    NavigationBar navigationBar() { return new NavigationBar(); }
-    BrowseScreen browseScreen() { return new BrowseScreen(); }
-    AddProjectScreen addProjectScreen() { return new AddProjectScreen(); }
-    ProjectScreen projectScreen() { return new ProjectScreen(); }
-    EditProjectScreen editProjectScreen() { return new EditProjectScreen(); }
-    AlertDialog alertDialog() { return new AlertDialog(); }
+    NavigationBar navigationBar() {
+        return new NavigationBar();
+    }
+
+    BrowseScreen browseScreen() {
+        return new BrowseScreen();
+    }
+
+    AddProjectScreen addProjectScreen() {
+        return new AddProjectScreen();
+    }
+
+    ProjectScreen projectScreen() {
+        return new ProjectScreen();
+    }
+
+    EditProjectScreen editProjectScreen() {
+        return new EditProjectScreen();
+    }
+
+    AlertDialog alertDialog() {
+        return new AlertDialog();
+    }
 
     @Test
     @Tag("smoke")
@@ -61,7 +78,7 @@ public class ProjectsTests extends TestBase {
                     .setName(newName)
                     .tapDone();
             projectScreen().verifyProjectName(newName);
-            A.back();
+            Android.back();
             browseScreen().shouldHaveProject(newName);
         });
 

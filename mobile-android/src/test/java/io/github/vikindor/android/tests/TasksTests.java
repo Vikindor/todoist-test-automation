@@ -1,7 +1,7 @@
 package io.github.vikindor.android.tests;
 
 import io.github.vikindor.android.extensions.WithLogin;
-import io.github.vikindor.android.helpers.A;
+import io.github.vikindor.android.helpers.Android;
 import io.github.vikindor.android.ui.components.*;
 import io.github.vikindor.android.ui.screens.main.InboxScreen;
 import io.qameta.allure.Epic;
@@ -19,13 +19,33 @@ import static io.qameta.allure.Allure.step;
 @WithLogin
 public class TasksTests extends TestBase {
 
-    InboxScreen inbox() { return new InboxScreen(); }
-    QuickAddButton quickAdd() { return new QuickAddButton(); }
-    QuickAddItemContainer quickAddItemContainer() { return new QuickAddItemContainer(); }
-    CreateItemContainer createItemContainer() { return new CreateItemContainer(); }
-    ItemDetailsContainer itemDetailsContainer() { return new ItemDetailsContainer(); }
-    AlertDialog alertDialog() { return new AlertDialog(); }
-    SnackBar snackBar() { return new SnackBar(); }
+    InboxScreen inbox() {
+        return new InboxScreen();
+    }
+
+    QuickAddButton quickAdd() {
+        return new QuickAddButton();
+    }
+
+    QuickAddItemContainer quickAddItemContainer() {
+        return new QuickAddItemContainer();
+    }
+
+    CreateItemContainer createItemContainer() {
+        return new CreateItemContainer();
+    }
+
+    ItemDetailsContainer itemDetailsContainer() {
+        return new ItemDetailsContainer();
+    }
+
+    AlertDialog alertDialog() {
+        return new AlertDialog();
+    }
+
+    SnackBar snackBar() {
+        return new SnackBar();
+    }
 
     @Test
     @Tag("smoke")
@@ -40,7 +60,7 @@ public class TasksTests extends TestBase {
             quickAddItemContainer()
                     .setMessage(initialName)
                     .tapAdd();
-            A.back();
+            Android.back();
         });
 
         step("Read task and verify actual name", () -> {
@@ -53,7 +73,7 @@ public class TasksTests extends TestBase {
             itemDetailsContainer()
                     .setTitle(newName)
                     .tapSave();
-            A.back();
+            Android.back();
             inbox().shouldContainTask(newName);
         });
 
@@ -79,7 +99,7 @@ public class TasksTests extends TestBase {
             quickAddItemContainer()
                     .setMessage(taskName)
                     .tapAdd();
-            A.back();
+            Android.back();
         });
 
         step("Complete task", () -> {
