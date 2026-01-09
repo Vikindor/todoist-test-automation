@@ -1,5 +1,6 @@
 package io.github.vikindor.android.helpers;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -20,5 +21,11 @@ public final class Android {
 
     public static void back() {
         driver().pressKey(new KeyEvent(AndroidKey.BACK));
+    }
+
+    public static void shouldHaveToast(String text) {
+        Selenide.Wait().until(driver ->
+                driver.getPageSource().contains(text)
+        );
     }
 }
