@@ -48,18 +48,6 @@ public class AuthHelper {
         // Todoist completes authentication asynchronously.
         // No reliable DOM, cookie or network signal exists.
         // Fixed delay acts as a synchronization barrier.
-        sleep(900);
+        sleep(1000);
     }
-
-    // Legacy UI login (kept for fallback / experiments)
-//    public static void uiLogin(String email, String password) {
-//
-//        LoginPage loginPage = new LoginPage();
-//
-//        loginPage.openPage();
-//        loginPage
-//                .setEmail(email)
-//                .setPassword(password)
-//                .clickLogInButton();
-//    }
 }
