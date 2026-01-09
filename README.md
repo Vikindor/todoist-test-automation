@@ -233,7 +233,7 @@ Build parameters:
 
 # 🔌 Integrations
 
-## <img width="4%" src="media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/> Jenkins
+## <a href="https://jenkins.autotests.cloud/job/037-vikindor-final_todoist_app/" target="_blank" rel="noopener noreferrer"><img width="4%" src="media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/> Jenkins</a>
 
 The project is executed via a Jenkins job, which serves as the primary CI entry point for running automated tests.
 
@@ -243,7 +243,7 @@ The job is responsible for triggering test execution, passing runtime parameters
 <img width="100%" src="media/screenshots/jenkins_1.jpg" alt="Jenkins Job screenshot" title="Jenkins Job"/>
 </p>
 
-## <img width="4%" src="media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/> Allure Report
+## <a href="https://jenkins.autotests.cloud/job/037-vikindor-final_todoist_app/allure" target="_blank" rel="noopener noreferrer"><img width="4%" src="media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/> Allure Report</a>
 
 A unified Allure report is generated after test execution and aggregates results from all test layers.
 
@@ -273,7 +273,7 @@ API test details provide request/response visibility and execution context for b
 <img width="100%" src="media/screenshots/allure_report_3.jpg" alt="Allure Report API test details screenshot" title="Allure Report API test details"/>
 </p>
 
-## <img width="4%" src="media/logos/allure_testops.png" alt="Allure TestOps logo" title="Allure TestOps"/> Allure TestOps integration
+## <a href="https://allure.autotests.cloud/project/5065/" target="_blank" rel="noopener noreferrer"><img width="4%" src="media/logos/allure_testops.png" alt="Allure TestOps logo" title="Allure TestOps"/> Allure TestOps integration</a>
 
 The Jenkins build pipeline is integrated with Allure TestOps for centralized test execution analysis and reporting.
 
@@ -296,7 +296,7 @@ Run details provide granular information about a specific execution, including i
 <img width="100%" src="media/screenshots/testops_2.jpg" alt="Allure TestOps run details screenshot" title="Allure TestOps run details"/>
 </p>
 
-## <img width="4%" src="media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/> Jira integration
+## <a href="https://jira.autotests.cloud/browse/HOMEWORK-1565" target="_blank" rel="noopener noreferrer"><img width="4%" src="media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/> Jira integration</a>
 
 Allure TestOps is integrated with Jira to establish traceability between automated tests and tracked work items.
 

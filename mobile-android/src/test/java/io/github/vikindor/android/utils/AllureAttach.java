@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static io.github.vikindor.android.configs.MobilePlatform.*;
 import static io.restassured.RestAssured.given;
 
 public class AllureAttach {
@@ -55,16 +54,14 @@ public class AllureAttach {
     }
 
     private static String getBrowserStackVideoUrl(String sessionId) {
-        String platform = System.getProperty(PROPERTY);
-        if (platform.equals(BS_ANDROID) || platform.equals(BS_IOS)) {
-            String url = String.format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
-            return given()
-                    .auth().basic(ConfigProvider.config().browserstackUser(), ConfigProvider.config().browserstackKey())
-                    .get(url)
-                    .then()
-                    .statusCode(200)
-                    .extract().path("automation_session.video_url");
-        }
-        return null;
+
+        String url = String.format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
+
+        return given()
+                .auth().basic(ConfigProvider.config().browserstackUser(), ConfigProvider.config().browserstackKey())
+                .get(url)
+                .then()
+                .statusCode(200)
+                .extract().path("automation_session.video_url");
     }
 }

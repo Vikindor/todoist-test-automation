@@ -234,7 +234,7 @@ allureReport
 
 # 🔌 Интеграции
 
-## <img width="4%" src="../media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/> Jenkins
+## <a href="https://jenkins.autotests.cloud/job/037-vikindor-final_todoist_app/" target="_blank" rel="noopener noreferrer"><img width="4%" src="media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/> Jenkins</a>
 
 Проект запускается через Jenkins-джобу, которая выступает основной CI-точкой входа для выполнения автоматизированных тестов.
 
@@ -244,7 +244,7 @@ allureReport
 <img width="100%" src="../media/screenshots/jenkins_1.jpg" alt="Jenkins Job screenshot" title="Jenkins Job"/>
 </p>
 
-## <img width="4%" src="../media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/> Allure Report
+## <a href="https://jenkins.autotests.cloud/job/037-vikindor-final_todoist_app/allure" target="_blank" rel="noopener noreferrer"><img width="4%" src="media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/> Allure Report</a>
 
 После выполнения тестов формируется единый Allure-отчёт, агрегирующий результаты всех тестовых слоёв.
 
@@ -274,7 +274,7 @@ allureReport
 <img width="100%" src="../media/screenshots/allure_report_3.jpg" alt="Allure Report API test details screenshot" title="Allure Report API test details"/>
 </p>
 
-## <img width="4%" src="../media/logos/allure_testops.png" alt="Allure TestOps logo" title="Allure TestOps"/> Интеграция с Allure TestOps
+## <a href="https://allure.autotests.cloud/project/5065/" target="_blank" rel="noopener noreferrer"><img width="4%" src="../media/logos/allure_testops.png" alt="Allure TestOps logo" title="Allure TestOps"/> Интеграция с Allure TestOps</a>
 
 Pipeline сборки в Jenkins интегрирован с Allure TestOps для централизованного анализа выполнения тестов и отчётности.
 
@@ -297,7 +297,7 @@ Pipeline сборки в Jenkins интегрирован с Allure TestOps дл
 <img width="100%" src="../media/screenshots/testops_2.jpg" alt="Allure TestOps run details screenshot" title="Allure TestOps run details"/>
 </p>
 
-## <img width="4%" src="../media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/> Интеграция с Jira
+## <a href="https://jira.autotests.cloud/browse/HOMEWORK-1565" target="_blank" rel="noopener noreferrer"><img width="4%" src="../media/logos/atlassian_jira.png" alt="Atlassian Jira logo" title="Atlassian Jira"/> Интеграция с Jira</a>
 
 Allure TestOps интегрирован с Jira для обеспечения трассируемости между автотестами и задачами разработки.
 
