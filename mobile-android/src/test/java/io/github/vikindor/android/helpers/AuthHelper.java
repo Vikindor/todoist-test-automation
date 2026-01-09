@@ -1,7 +1,7 @@
 package io.github.vikindor.android.helpers;
 
 import io.github.vikindor.android.ui.screens.auth.LoginScreen;
-import io.github.vikindor.android.ui.screens.onboarding.WelcomeScreen;
+import io.github.vikindor.android.ui.screens.auth.WelcomeScreen;
 
 public class AuthHelper {
 
