@@ -1,4 +1,4 @@
-package io.github.vikindor.web.helpers;
+package io.github.vikindor.web.utils;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
@@ -39,11 +39,13 @@ public class AllureAttach {
 
     private static URL getSelenoidVideoUrl() {
         String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId() + ".mp4";
+
         try {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }
