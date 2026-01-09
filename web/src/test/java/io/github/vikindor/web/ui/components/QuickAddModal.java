@@ -19,5 +19,4 @@ public class QuickAddModal {
         submitButton.click();
         return this;
     }
-
 }

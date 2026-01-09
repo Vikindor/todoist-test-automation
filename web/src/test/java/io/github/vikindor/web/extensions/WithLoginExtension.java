@@ -8,7 +8,6 @@ public class WithLoginExtension implements BeforeTestExecutionCallback {
 
     @Override
     public void beforeTestExecution(ExtensionContext context) {
-
         boolean withLogin =
                 context.getTestMethod()
                        .map(method -> method.isAnnotationPresent(WithLogin.class))

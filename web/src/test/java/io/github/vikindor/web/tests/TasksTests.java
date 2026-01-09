@@ -19,9 +19,17 @@ import static io.qameta.allure.Allure.step;
 @WithLogin
 public class TasksTests extends TestBase {
 
-    InboxPage inbox() { return new InboxPage(); }
-    QuickAddModal quickAdd() { return new QuickAddModal(); }
-    DeleteModal deleteTaskModal() { return new DeleteModal(); }
+    InboxPage inbox() {
+        return new InboxPage();
+    }
+
+    QuickAddModal quickAdd() {
+        return new QuickAddModal();
+    }
+
+    DeleteModal deleteTaskModal() {
+        return new DeleteModal();
+    }
 
     @Test
     @Tag("smoke")

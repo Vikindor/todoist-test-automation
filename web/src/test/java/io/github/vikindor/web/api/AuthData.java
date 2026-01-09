@@ -3,7 +3,6 @@ package io.github.vikindor.web.api;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AuthData {
-
     private final String email;
     private final String password;
 

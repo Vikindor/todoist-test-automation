@@ -16,15 +16,26 @@ import static io.qameta.allure.Allure.step;
 
 @Epic("Web")
 @Feature("Projects")
-@Tag("web")  @Tag("projects") @Tag("regression")
+@Tag("web") @Tag("projects") @Tag("regression")
 @DisplayName("Projects")
 @WithLogin
 public class ProjectsTests extends TestBase {
 
-    ProjectsPage projects() { return new ProjectsPage(); }
-    ProjectPage project() { return new ProjectPage(); }
-    ProjectModal projectModal() { return new ProjectModal(); }
-    DeleteModal deleteProjectModal() { return new DeleteModal(); }
+    ProjectsPage projects() {
+        return new ProjectsPage();
+    }
+
+    ProjectPage project() {
+        return new ProjectPage();
+    }
+
+    ProjectModal projectModal() {
+        return new ProjectModal();
+    }
+
+    DeleteModal deleteProjectModal() {
+        return new DeleteModal();
+    }
 
     @Test
     @Tag("smoke")
