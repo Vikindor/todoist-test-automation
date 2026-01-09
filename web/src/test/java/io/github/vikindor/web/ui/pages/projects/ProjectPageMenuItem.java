@@ -12,7 +12,11 @@ public class ProjectPageMenuItem {
         this.root = root;
     }
 
-    void clickEditAction() { root.$$("[role='menuitem']").findBy(text("Edit")).click(); }
+    void clickEditAction() {
+        root.$$("[role='menuitem']").findBy(text("Edit")).click();
+    }
 
-    void clickDeleteAction() { root.$$("[role='menuitem']").findBy(text("Delete")).click(); }
+    void clickDeleteAction() {
+        root.$$("[role='menuitem']").findBy(text("Delete")).click();
+    }
 }

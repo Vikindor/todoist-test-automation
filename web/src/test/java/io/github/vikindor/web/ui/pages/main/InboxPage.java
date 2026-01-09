@@ -9,7 +9,7 @@ public class InboxPage {
 
     private final SelenideElement sidebarContainer = $("[data-testid='app-sidebar-container']");
 
-    private final TasksList tasksList =  new TasksList();
+    private final TasksList tasksList = new TasksList();
     private final TaskEditMenu taskEditMenu = new TaskEditMenu();
 
     public InboxPage clickAddTaskButton() {

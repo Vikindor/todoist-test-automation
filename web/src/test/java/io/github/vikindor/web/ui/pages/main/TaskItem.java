@@ -6,7 +6,9 @@ public class TaskItem {
 
     private final SelenideElement root;
 
-    TaskItem(SelenideElement root) { this.root = root; }
+    TaskItem(SelenideElement root) {
+        this.root = root;
+    }
 
     void clickTaskCheckmark() {
         root.$("[data-action-hint='task-complete']").click();

@@ -22,7 +22,9 @@ public class TasksList {
         taskItems.findBy(text(taskName)).shouldNotBe(visible);
     }
 
-    void clickTaskCheckmark(String taskName) { new TaskItem(taskItems.findBy(text(taskName))).clickTaskCheckmark(); }
+    void clickTaskCheckmark(String taskName) {
+        new TaskItem(taskItems.findBy(text(taskName))).clickTaskCheckmark();
+    }
 
     void clickEdit(String taskName) {
         new TaskItem(taskItems.findBy(text(taskName))).clickEditAction();
@@ -36,6 +38,7 @@ public class TasksList {
         saveButton.click();
     }
 
-    void openMoreMenu(String taskName) { new TaskItem(taskItems.findBy(text(taskName))).openMoreMenu(); }
-
+    void openMoreMenu(String taskName) {
+        new TaskItem(taskItems.findBy(text(taskName))).openMoreMenu();
+    }
 }

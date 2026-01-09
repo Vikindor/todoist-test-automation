@@ -11,5 +11,4 @@ public class TaskEditMenu {
     void clickDelete() {
         new TaskEditMenuItem(taskEditMenu).clickDeleteAction();
     }
-
 }

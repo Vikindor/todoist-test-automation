@@ -8,7 +8,7 @@ public class ProjectPageMenu {
 
     private final SelenideElement projectEditMenu = $("[class='reactist_menulist']");
 
-    void clickEdit(){
+    void clickEdit() {
         new ProjectPageMenuItem(projectEditMenu).clickEditAction();
     }
 
