@@ -24,8 +24,10 @@ public final class Android {
     }
 
     public static void shouldHaveToast(String text) {
-        Selenide.Wait().until(driver ->
-                driver.getPageSource().contains(text)
-        );
+        Selenide.Wait().until(driver -> driver.getPageSource().contains(text));
+    }
+
+    public static void waitForExternalAppOpen(String packageName) {
+        Selenide.Wait().until(driver -> !getCurrentPackage().equals(packageName));
     }
 }
