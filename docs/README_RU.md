@@ -56,7 +56,7 @@
 </p>
 
 `+` <a href="https://github.com/matteobaccan/owner" target="_blank" rel="noopener noreferrer">БИБЛИОТЕКА OWNER</a>  
-`+` <a href="https://github.com/Vikindor/allure-report-templates" target="_blank" rel="noopener noreferrer">ALLURE REPORT - HTTP ШАБЛОНЫ</a>    
+`+` <a href="https://github.com/Vikindor/allure-report-templates" target="_blank" rel="noopener noreferrer">ALLURE REPORT - HTTP ШАБЛОНЫ</a> · Собственный репозиторий  
 `+` <a href="https://github.com/qa-guru/allure-notifications" target="_blank" rel="noopener noreferrer">ALLURE NOTIFICATIONS</a>  
 
 
