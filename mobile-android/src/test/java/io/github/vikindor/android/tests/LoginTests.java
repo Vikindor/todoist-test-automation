@@ -1,6 +1,5 @@
 package io.github.vikindor.android.tests;
 
-import com.codeborne.selenide.Selenide;
 import io.github.vikindor.android.configs.ProjectConfig;
 import io.github.vikindor.android.helpers.Android;
 import io.github.vikindor.android.ui.screens.auth.GoogleScreen;
@@ -73,16 +72,14 @@ public class LoginTests extends TestBase {
                     .tapLoginButton();
         });
 
-        step("Verify wrong credentials error", () -> {
-            loginScreen().shouldShowCredentialsError();
-        });
+        step("Verify wrong credentials error", loginScreen()::shouldShowCredentialsError);
     }
 
     @Test
     @Tag("smoke")
     @DisplayName("User can navigate to Forgot password from Login screen")
     void shouldNavigateToForgotPasswordPage() {
-        String appPackage = config.appPackage();
+        String packageName = config.appPackage();
 
         welcomeScreen()
                 .tapContinueWithEmailButton()
@@ -91,9 +88,7 @@ public class LoginTests extends TestBase {
         step("Navigate to Forgot your password", loginScreen()::tapForgotYourPasswordButton);
 
         step("Verify external app opening attempt", () -> {
-            Selenide.Wait().until(driver ->
-                    !Android.getCurrentPackage().equals(appPackage)
-            );
+            Android.waitForExternalAppOpen(packageName);
         });
     }
 
@@ -110,14 +105,12 @@ public class LoginTests extends TestBase {
     @Tag("smoke")
     @DisplayName("User can navigate to Facebook sign in from Welcome screen")
     void shouldOpenFacebookSignIn() {
-        String appPackage = config.appPackage();
+        String packageName = config.appPackage();
 
         step("Open Facebook sign in", welcomeScreen()::tapContinueWithFacebookButton);
 
         step("Verify external app opening attempt", () -> {
-            Selenide.Wait().until(driver ->
-                    !Android.getCurrentPackage().equals(appPackage)
-            );
+            Android.waitForExternalAppOpen(packageName);
         });
     }
 }
