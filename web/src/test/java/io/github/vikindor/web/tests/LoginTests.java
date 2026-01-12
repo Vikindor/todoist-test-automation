@@ -60,9 +60,7 @@ public class LoginTests extends TestBase {
                     .clickLogInButton();
         });
 
-        step("Verify email validation error", () -> {
-            loginPage().shouldShowEmailValidationError();
-        });
+        step("Verify email validation error", loginPage()::shouldShowEmailValidationError);
     }
 
     @Test
@@ -78,9 +76,7 @@ public class LoginTests extends TestBase {
                     .clickLogInButton();
         });
 
-        step("Verify password validation error", () -> {
-            loginPage().shouldShowPasswordValidationError();
-        });
+        step("Verify password validation error", loginPage()::shouldShowPasswordValidationError);
     }
 
     @Test
@@ -97,9 +93,7 @@ public class LoginTests extends TestBase {
                     .clickLogInButton();
         });
 
-        step("Verify wrong email/password error", () -> {
-            loginPage().shouldShowWrongEmailOrPasswordError();
-        });
+        step("Verify wrong email/password error", loginPage()::shouldShowWrongEmailOrPasswordError);
     }
 
     @Test
@@ -112,9 +106,7 @@ public class LoginTests extends TestBase {
                     .clickForgotPasswordLink();
         });
 
-        step("Verify page title", () -> {
-            forgotPasswordPage().shouldHaveTitle();
-        });
+        step("Verify page title", forgotPasswordPage()::shouldHaveTitle);
     }
 
     @Test
@@ -127,9 +119,7 @@ public class LoginTests extends TestBase {
                     .clickSignUpLink();
         });
 
-        step("Verify page title", () -> {
-            signUpPage().shouldHaveTitle();
-        });
+        step("Verify page title", signUpPage()::shouldHaveTitle);
     }
 
     @Test
@@ -142,9 +132,7 @@ public class LoginTests extends TestBase {
                     .clickGoogleButton();
         });
 
-        step("Verify Google sign in frame", () -> {
-            googlePage().shouldHaveIFrame();
-        });
+        step("Verify Google sign in frame", googlePage()::shouldHaveIFrame);
     }
 
     @Test
@@ -157,9 +145,7 @@ public class LoginTests extends TestBase {
                     .clickFacebookButton();
         });
 
-        step("Verify Facebook title", () -> {
-            facebookPage().shouldHaveTitle();
-        });
+        step("Verify Facebook title", facebookPage()::shouldHaveTitle);
     }
 
     @Test
@@ -172,8 +158,6 @@ public class LoginTests extends TestBase {
                     .clickAppleButton();
         });
 
-        step("Verify Apple page", () -> {
-            applePage().shouldBeOpened();
-        });
+        step("Verify Apple page opened", applePage()::shouldBeOpened);
     }
 }
