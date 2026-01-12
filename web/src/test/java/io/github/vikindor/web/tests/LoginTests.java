@@ -13,9 +13,7 @@ import static io.qameta.allure.Allure.step;
 
 @Epic("Web")
 @Feature("Login")
-@Tag("web")
-@Tag("login")
-@Tag("regression")
+@Tag("web") @Tag("login") @Tag("regression")
 @DisplayName("Login")
 public class LoginTests extends TestBase {
 
