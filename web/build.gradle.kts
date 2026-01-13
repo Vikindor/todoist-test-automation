@@ -22,6 +22,7 @@ dependencies {
     testImplementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
     allureRawResultElements(files(rootProject.layout.buildDirectory.dir("allure-results")))
     testImplementation("org.aeonbits.owner:owner:1.0.12")
+    testImplementation("net.datafaker:datafaker:2.5.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testRuntimeOnly("org.slf4j:slf4j-simple:2.0.17")
 }
