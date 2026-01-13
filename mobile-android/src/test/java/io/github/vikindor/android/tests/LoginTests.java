@@ -2,9 +2,7 @@ package io.github.vikindor.android.tests;
 
 import io.github.vikindor.android.configs.ProjectConfig;
 import io.github.vikindor.android.helpers.Android;
-import io.github.vikindor.android.ui.screens.auth.GoogleScreen;
-import io.github.vikindor.android.ui.screens.auth.LoginScreen;
-import io.github.vikindor.android.ui.screens.auth.WelcomeScreen;
+import io.github.vikindor.android.testdata.GeneratedData;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.aeonbits.owner.ConfigFactory;
@@ -13,6 +11,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
+import static io.github.vikindor.android.ui.screens.Screens.*;
 
 @Epic("Android")
 @Feature("Login")
@@ -22,24 +21,12 @@ public class LoginTests extends TestBase {
 
     private static final ProjectConfig config = ConfigFactory.create(ProjectConfig.class);
 
-    WelcomeScreen welcomeScreen() {
-        return new WelcomeScreen();
-    }
-
-    GoogleScreen googleScreen() {
-        return new GoogleScreen();
-    }
-
-    LoginScreen loginScreen() {
-        return new LoginScreen();
-    }
-
     @Test
     @Tag("smoke")
     @DisplayName("Email validation error is shown for invalid email")
     void shouldShowEmailValidationError() {
-        String randomInvalidEmail = System.currentTimeMillis() + "@123";
-        String randomInvalidPassword = String.valueOf(System.currentTimeMillis()).substring(0, 8);
+        String invalidEmail = GeneratedData.invalidEmail();
+        String invalidPassword = GeneratedData.invalidPassword();
 
         welcomeScreen()
                 .tapContinueWithEmailButton()
@@ -47,8 +34,8 @@ public class LoginTests extends TestBase {
 
         step("Submit invalid email and password", () -> {
             loginScreen()
-                    .setEmail(randomInvalidEmail)
-                    .setPassword(randomInvalidPassword)
+                    .setEmail(invalidEmail)
+                    .setPassword(invalidPassword)
                     .tapLoginButton();
         });
 
@@ -59,7 +46,7 @@ public class LoginTests extends TestBase {
     @Tag("regression")
     @DisplayName("Wrong credentials toast is shown for wrong password")
     void shouldShowWrongEmailOrPasswordError() {
-        String randomInvalidPassword = String.valueOf(System.currentTimeMillis()).substring(0, 8);
+        String invalidPassword = GeneratedData.invalidPassword();
 
         welcomeScreen()
                 .tapContinueWithEmailButton()
@@ -68,7 +55,7 @@ public class LoginTests extends TestBase {
         step("Submit valid email with invalid password", () -> {
             loginScreen()
                     .setEmail(config.todoistEmail())
-                    .setPassword(randomInvalidPassword)
+                    .setPassword(invalidPassword)
                     .tapLoginButton();
         });
 
