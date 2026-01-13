@@ -2,6 +2,7 @@ package io.github.vikindor.tests;
 
 import io.github.vikindor.models.ErrorResponse;
 import io.github.vikindor.models.ProjectResponse;
+import io.github.vikindor.testdata.GeneratedData;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +24,7 @@ public class ProjectsTests extends TestBase {
     @Tag("smoke")
     @DisplayName("Project CRUD lifecycle")
     void shouldCreateReadUpdateAndDeleteProject() {
-        String initialName = "Test Project " + System.currentTimeMillis();
+        String initialName = GeneratedData.nameOfLength(10);
         String newName = initialName + " updated";
 
         ProjectResponse createdProject = step("Create project", () ->
@@ -119,7 +120,7 @@ public class ProjectsTests extends TestBase {
     @Tag("regression")
     @DisplayName("DELETE method is idempotent")
     void shouldDeleteProjectIdempotently() {
-        String initialName = "Test Project " + System.currentTimeMillis();
+        String initialName = GeneratedData.nameOfLength(10);
 
         ProjectResponse createdProject = step("Create project", () ->
                 createProject(authSpec(), initialName)
@@ -146,7 +147,7 @@ public class ProjectsTests extends TestBase {
     @Tag("negative")
     @DisplayName("Deleted project cannot be retrieved")
     void shouldNotGetDeletedProject() {
-        String initialName = "Test Project " + System.currentTimeMillis();
+        String initialName = GeneratedData.nameOfLength(10);
 
         ProjectResponse createdProject = step("Create project", () ->
                 createProject(authSpec(), initialName)
