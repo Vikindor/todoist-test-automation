@@ -14,4 +14,13 @@ public class SnackBar {
 
         return this;
     }
+
+    public SnackBar shouldShowTaskCharacterLimitError() {
+        $(xpath(
+                "//*[@resource-id='com.todoist:id/snackbar_text' " +
+                        "and contains(@text, 'Task name character limit:')]"
+        )).shouldBe(visible);
+
+        return this;
+    }
 }
