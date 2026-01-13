@@ -14,14 +14,11 @@ public class BrowseScreen {
             addProjectAction = $(androidUIAutomator("new UiSelector().text(\"Add project\")"));
 
     private SelenideElement projectTitle(String projectName) {
-        return $(xpath("//*[contains(@text, \"" + projectName + "\")]"));
+        return $(xpath("//*[@text=\"" + projectName + "\"]"));
     }
 
     private SelenideElement projectItem(String projectName) {
-        return $(xpath(
-                "//*[contains(@text, \"" + projectName + "\")]" +
-                        "/ancestor::android.view.View[@clickable='true']"
-        ));
+        return $(xpath("//*[@text=\"" + projectName + "\"]" + "/ancestor::android.view.View[@clickable='true']"));
     }
 
     public BrowseScreen tapAdd() {
