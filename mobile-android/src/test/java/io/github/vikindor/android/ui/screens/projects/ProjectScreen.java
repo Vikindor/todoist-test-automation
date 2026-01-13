@@ -17,7 +17,7 @@ public class ProjectScreen {
         return $(androidUIAutomator("new UiSelector().text(\"" + title + "\")"));
     }
 
-    public ProjectScreen verifyProjectName(String title) {
+    public ProjectScreen shouldHaveProjectName(String title) {
         projectByTitle(title).shouldBe(visible);
         return this;
     }
