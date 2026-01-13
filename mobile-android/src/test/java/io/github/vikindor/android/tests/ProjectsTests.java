@@ -2,19 +2,18 @@ package io.github.vikindor.android.tests;
 
 import io.github.vikindor.android.extensions.WithLogin;
 import io.github.vikindor.android.helpers.Android;
-import io.github.vikindor.android.ui.components.AlertDialog;
-import io.github.vikindor.android.ui.components.NavigationBar;
-import io.github.vikindor.android.ui.screens.main.BrowseScreen;
-import io.github.vikindor.android.ui.screens.projects.AddProjectScreen;
-import io.github.vikindor.android.ui.screens.projects.EditProjectScreen;
-import io.github.vikindor.android.ui.screens.projects.ProjectScreen;
+import io.github.vikindor.android.testdata.GeneratedData;
+import io.github.vikindor.android.ui.actions.ProjectActions;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static io.qameta.allure.Allure.step;
+import static io.github.vikindor.android.ui.screens.Screens.*;
 
 @Epic("Android")
 @Feature("Projects")
@@ -23,40 +22,15 @@ import static io.qameta.allure.Allure.step;
 @WithLogin
 public class ProjectsTests extends TestBase {
 
-    NavigationBar navigationBar() {
-        return new NavigationBar();
-    }
-
-    BrowseScreen browseScreen() {
-        return new BrowseScreen();
-    }
-
-    AddProjectScreen addProjectScreen() {
-        return new AddProjectScreen();
-    }
-
-    ProjectScreen projectScreen() {
-        return new ProjectScreen();
-    }
-
-    EditProjectScreen editProjectScreen() {
-        return new EditProjectScreen();
-    }
-
-    AlertDialog alertDialog() {
-        return new AlertDialog();
-    }
-
     @Test
     @Tag("smoke")
     @DisplayName("Projects CRUD lifecycle")
     void shouldCreateReadUpdateAndDeleteProject() {
-        String initialName = "Test Project " + System.currentTimeMillis();
+        String initialName = GeneratedData.nameOfLength(10);
         String newName = initialName + " updated";
 
-        navigationBar().tapBrowse();
-
         step("Create project", () -> {
+            navigationBar().tapBrowse();
             browseScreen()
                     .tapAdd()
                     .tapAddProject();
@@ -66,7 +40,7 @@ public class ProjectsTests extends TestBase {
         });
 
         step("Read project and verify actual name", () -> {
-            projectScreen().verifyProjectName(initialName);
+            projectScreen().shouldHaveProjectName(initialName);
         });
 
         step("Update project and verify updated name", () -> {
@@ -76,12 +50,12 @@ public class ProjectsTests extends TestBase {
             editProjectScreen()
                     .setName(newName)
                     .tapDone();
-            projectScreen().verifyProjectName(newName);
+            projectScreen().shouldHaveProjectName(newName);
             Android.back();
             browseScreen().shouldHaveProject(newName);
         });
 
-        step("Delete task and verify it is deleted", () -> {
+        step("Delete project and verify it is deleted", () -> {
             browseScreen().openProject(newName);
             projectScreen()
                     .openProjectOptionsMenu()
@@ -90,5 +64,73 @@ public class ProjectsTests extends TestBase {
             navigationBar().tapBrowse();
             browseScreen().shouldNotHaveProject(newName);
         });
+    }
+
+    @ParameterizedTest
+    @Tag("regression")
+    @MethodSource("io.github.vikindor.android.testdata.ProjectNameTestData#validNames")
+    @DisplayName("Projects with different valid names can be created")
+    void shouldCreateProjectsWithDifferentValidNames(String projectName) {
+        step("Create project", () -> {
+            navigationBar().tapBrowse();
+            browseScreen()
+                    .tapAdd()
+                    .tapAddProject();
+            addProjectScreen()
+                    .setProjectName(projectName)
+                    .tapDone();
+        });
+
+        step("Read project and verify actual name", () -> {
+            projectScreen().shouldHaveProjectName(projectName);
+        });
+
+        ProjectActions.projectCleanup();
+    }
+
+    @Test
+    @Tag("regression")
+    @DisplayName("Project name supports ASCII symbols")
+    void shouldCreateProjectWithAsciiSymbols() {
+        String projectName = "!@#$%^&*()_+-={}[]";
+
+        step("Create project", () -> {
+            navigationBar().tapBrowse();
+            browseScreen()
+                    .tapAdd()
+                    .tapAddProject();
+            addProjectScreen()
+                    .setProjectName(projectName)
+                    .tapDone();
+        });
+
+        step("Read project and verify actual name", () -> {
+            projectScreen().shouldHaveProjectName(projectName);
+        });
+
+        ProjectActions.projectCleanup();
+    }
+
+    @Test
+    @Tag("regression")
+    @DisplayName("Project name supports Unicode symbols")
+    void shouldCreateProjectWithUnicodeSymbols() {
+        String projectName = "№✓★";
+
+        step("Create project", () -> {
+            navigationBar().tapBrowse();
+            browseScreen()
+                    .tapAdd()
+                    .tapAddProject();
+            addProjectScreen()
+                    .setProjectName(projectName)
+                    .tapDone();
+        });
+
+        step("Read project and verify actual name", () -> {
+            projectScreen().shouldHaveProjectName(projectName);
+        });
+
+        ProjectActions.projectCleanup();
     }
 }
