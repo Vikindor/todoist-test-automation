@@ -23,6 +23,7 @@ dependencies {
     testImplementation("io.qameta.allure:allure-rest-assured:2.31.0")
     allureRawResultElements(files(rootProject.layout.buildDirectory.dir("allure-results")))
     testImplementation("org.aeonbits.owner:owner:1.0.12")
+    testImplementation("net.datafaker:datafaker:2.5.3")
     testImplementation("io.appium:java-client:10.0.0")
     testImplementation("commons-io:commons-io:2.21.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
