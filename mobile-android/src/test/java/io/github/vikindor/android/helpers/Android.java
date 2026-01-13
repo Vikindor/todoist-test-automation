@@ -23,6 +23,14 @@ public final class Android {
         driver().pressKey(new KeyEvent(AndroidKey.BACK));
     }
 
+    public static void setClipboardText(String text) {
+        driver().setClipboardText(text);
+    }
+
+    public static void paste() {
+        driver().pressKey(new KeyEvent(AndroidKey.PASTE));
+    }
+
     public static void shouldHaveToast(String text) {
         Selenide.Wait().until(driver -> driver.getPageSource().contains(text));
     }
