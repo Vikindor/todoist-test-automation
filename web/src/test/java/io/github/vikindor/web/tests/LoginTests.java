@@ -1,6 +1,7 @@
 package io.github.vikindor.web.tests;
 
 import io.github.vikindor.web.configs.ProjectConfig;
+import io.github.vikindor.web.testdata.GeneratedData;
 import io.github.vikindor.web.ui.pages.auth.*;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
+import static io.github.vikindor.web.ui.pages.Pages.*;
 
 @Epic("Web")
 @Feature("Login")
@@ -19,42 +21,18 @@ public class LoginTests extends TestBase {
 
     private static final ProjectConfig config = ConfigFactory.create(ProjectConfig.class);
 
-    LoginPage loginPage() {
-        return new LoginPage();
-    }
-
-    ForgotPasswordPage forgotPasswordPage() {
-        return new ForgotPasswordPage();
-    }
-
-    SignUpPage signUpPage() {
-        return new SignUpPage();
-    }
-
-    GooglePage googlePage() {
-        return new GooglePage();
-    }
-
-    FacebookPage facebookPage() {
-        return new FacebookPage();
-    }
-
-    ApplePage applePage() {
-        return new ApplePage();
-    }
-
     @Test
     @Tag("smoke")
     @DisplayName("Email validation error is shown for invalid email")
     void shouldShowEmailValidationError() {
-        String randomInvalidEmail = System.currentTimeMillis() + "@123";
-        String randomInvalidPassword = String.valueOf(System.currentTimeMillis()).substring(0, 8);
+        String invalidEmail = GeneratedData.invalidEmail();
+        String invalidPassword = GeneratedData.invalidPassword();
 
         step("Submit invalid email and password", () -> {
             loginPage()
                     .openPage()
-                    .setEmail(randomInvalidEmail)
-                    .setPassword(randomInvalidPassword)
+                    .setEmail(invalidEmail)
+                    .setPassword(invalidPassword)
                     .clickLogInButton();
         });
 
@@ -65,12 +43,12 @@ public class LoginTests extends TestBase {
     @Tag("smoke")
     @DisplayName("Password validation error is shown for empty password")
     void shouldShowPasswordValidationError() {
-        String randomInvalidEmail = System.currentTimeMillis() + "@123";
+        String invalidEmail = GeneratedData.invalidEmail();
 
         step("Submit email with empty password", () -> {
             loginPage()
                     .openPage()
-                    .setEmail(randomInvalidEmail)
+                    .setEmail(invalidEmail)
                     .clickLogInButton();
         });
 
@@ -81,13 +59,13 @@ public class LoginTests extends TestBase {
     @Tag("regression")
     @DisplayName("Error is shown for wrong password")
     void shouldShowWrongEmailOrPasswordError() {
-        String randomInvalidPassword = String.valueOf(System.currentTimeMillis()).substring(0, 8);
+        String invalidPassword = GeneratedData.invalidPassword();
 
         step("Submit valid email with invalid password", () -> {
             loginPage()
                     .openPage()
                     .setEmail(config.todoistEmail())
-                    .setPassword(randomInvalidPassword)
+                    .setPassword(invalidPassword)
                     .clickLogInButton();
         });
 
