@@ -22,6 +22,7 @@ dependencies {
     testImplementation("com.fasterxml.jackson.core:jackson-annotations:2.20")
     testImplementation("io.qameta.allure:allure-rest-assured:2.31.0")
     allureRawResultElements(files(rootProject.layout.buildDirectory.dir("allure-results")))
+    testImplementation("net.datafaker:datafaker:2.5.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testRuntimeOnly("org.slf4j:slf4j-simple:2.0.17")
 }
