@@ -12,8 +12,8 @@ public class QuickAddItemContainer {
             messageInput = $(id("android:id/message")),
             addButton = $(accessibilityId("Add"));
 
-    public QuickAddItemContainer setMessage(String message) {
-        messageInput.sendKeys(message);
+    public QuickAddItemContainer setTaskName(String taskName) {
+        messageInput.sendKeys(taskName);
         return this;
     }
 
