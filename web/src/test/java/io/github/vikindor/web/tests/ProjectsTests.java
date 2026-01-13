@@ -1,18 +1,19 @@
 package io.github.vikindor.web.tests;
 
 import io.github.vikindor.web.extensions.WithLogin;
-import io.github.vikindor.web.ui.components.ProjectModal;
-import io.github.vikindor.web.ui.components.DeleteModal;
-import io.github.vikindor.web.ui.pages.projects.ProjectPage;
-import io.github.vikindor.web.ui.pages.projects.ProjectsPage;
+import io.github.vikindor.web.testdata.GeneratedData;
+import io.github.vikindor.web.ui.actions.ProjectActions;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
+import static io.github.vikindor.web.ui.pages.Pages.*;
 
 @Epic("Web")
 @Feature("Projects")
@@ -21,27 +22,11 @@ import static io.qameta.allure.Allure.step;
 @WithLogin
 public class ProjectsTests extends TestBase {
 
-    ProjectsPage projects() {
-        return new ProjectsPage();
-    }
-
-    ProjectPage project() {
-        return new ProjectPage();
-    }
-
-    ProjectModal projectModal() {
-        return new ProjectModal();
-    }
-
-    DeleteModal deleteProjectModal() {
-        return new DeleteModal();
-    }
-
     @Test
     @Tag("smoke")
     @DisplayName("Projects CRUD lifecycle")
     void shouldCreateReadUpdateAndDeleteProject() {
-        String initialName = "Test Project " + System.currentTimeMillis();
+        String initialName = GeneratedData.nameOfLength(10);
         String newName = initialName + " updated";
 
         step("Create project", () -> {
@@ -68,7 +53,7 @@ public class ProjectsTests extends TestBase {
             project().shouldHaveProjectName(newName);
         });
 
-        step("Delete task and verify it is deleted", () -> {
+        step("Delete project and verify it is deleted", () -> {
             project()
                     .openProjectOptionsMenu()
                     .deleteProject();
@@ -82,5 +67,73 @@ public class ProjectsTests extends TestBase {
                     .openPage()
                     .shouldNotHaveProject(newName);
         });
+    }
+
+    @ParameterizedTest
+    @Tag("regression")
+    @MethodSource("io.github.vikindor.web.testdata.ProjectNameTestData#validNames")
+    @DisplayName("Projects with different valid names can be created")
+    void shouldCreateProjectsWithDifferentValidNames(String projectName) {
+        step("Create project", () -> {
+            projects()
+                    .openPage()
+                    .clickAddButton()
+                    .clickAddProject();
+            projectModal()
+                    .setName(projectName)
+                    .clickSubmitButton();
+        });
+
+        step("Verify project name", () -> {
+            project().shouldHaveProjectName(projectName);
+        });
+
+        ProjectActions.projectCleanup(projectName);
+    }
+
+    @Test
+    @Tag("regression")
+    @DisplayName("Project name supports ASCII symbols")
+    void shouldCreateProjectWithAsciiSymbols() {
+        String projectName = "!@#$%^&*()_+-={}[]";
+
+        step("Create project", () -> {
+            projects()
+                    .openPage()
+                    .clickAddButton()
+                    .clickAddProject();
+            projectModal()
+                    .setName(projectName)
+                    .clickSubmitButton();
+        });
+
+        step("Verify project name", () -> {
+            project().shouldHaveProjectName(projectName);
+        });
+
+        ProjectActions.projectCleanup(projectName);
+    }
+
+    @Test
+    @Tag("regression")
+    @DisplayName("Project name supports Unicode symbols")
+    void shouldCreateProjectWithUnicodeSymbols() {
+        String projectName = "№✓★";
+
+        step("Create project", () -> {
+            projects()
+                    .openPage()
+                    .clickAddButton()
+                    .clickAddProject();
+            projectModal()
+                    .setName(projectName)
+                    .clickSubmitButton();
+        });
+
+        step("Verify project name", () -> {
+            project().shouldHaveProjectName(projectName);
+        });
+
+        ProjectActions.projectCleanup(projectName);
     }
 }
