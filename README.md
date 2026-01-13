@@ -61,6 +61,7 @@ The repository is designed as a **multi-module Gradle project** where each modul
 </p>
 
 `+` <a href="https://github.com/matteobaccan/owner" target="_blank" rel="noopener noreferrer">OWNER LIBRARY</a>  
+`+` <a href="https://www.datafaker.net/" target="_blank" rel="noopener noreferrer">DATAFAKER LIBRARY</a>  
 `+` <a href="https://github.com/Vikindor/allure-report-templates" target="_blank" rel="noopener noreferrer">ALLURE REPORT – HTTP TEMPLATES</a> · Maintained by me  
 `+` <a href="https://github.com/qa-guru/allure-notifications" target="_blank" rel="noopener noreferrer">ALLURE NOTIFICATIONS</a>  
 
