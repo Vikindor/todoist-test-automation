@@ -1,16 +1,18 @@
 package io.github.vikindor.web.tests;
 
 import io.github.vikindor.web.extensions.WithLogin;
-import io.github.vikindor.web.ui.components.DeleteModal;
-import io.github.vikindor.web.ui.components.QuickAddModal;
-import io.github.vikindor.web.ui.pages.main.InboxPage;
+import io.github.vikindor.web.testdata.GeneratedData;
+import io.github.vikindor.web.ui.actions.TaskActions;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static io.qameta.allure.Allure.step;
+import static io.github.vikindor.web.ui.pages.Pages.*;
 
 @Epic("Web")
 @Feature("Tasks")
@@ -19,23 +21,11 @@ import static io.qameta.allure.Allure.step;
 @WithLogin
 public class TasksTests extends TestBase {
 
-    InboxPage inbox() {
-        return new InboxPage();
-    }
-
-    QuickAddModal quickAdd() {
-        return new QuickAddModal();
-    }
-
-    DeleteModal deleteTaskModal() {
-        return new DeleteModal();
-    }
-
     @Test
     @Tag("smoke")
     @DisplayName("Tasks CRUD lifecycle")
     void shouldCreateReadUpdateAndDeleteTask() {
-        String initialName = "Test Task " + System.currentTimeMillis();
+        String initialName = GeneratedData.nameOfLength(10);
         String newName = initialName + " updated";
 
         step("Create task", () -> {
@@ -70,7 +60,7 @@ public class TasksTests extends TestBase {
     @Tag("smoke")
     @DisplayName("Task can be completed")
     void shouldCompleteTask() {
-        String taskName = "Test Task " + System.currentTimeMillis();
+        String taskName = GeneratedData.nameOfLength(10);
 
         step("Create task", () -> {
             inbox().clickAddTaskButton();
@@ -85,6 +75,83 @@ public class TasksTests extends TestBase {
 
         step("Verify task completed", () -> {
             inbox().shouldNotContainTask(taskName);
+        });
+    }
+
+    @ParameterizedTest
+    @Tag("regression")
+    @MethodSource("io.github.vikindor.web.testdata.TaskNameTestData#validNames")
+    @DisplayName("Tasks with different valid names can be created")
+    void shouldCreateTasksWithDifferentValidNames(String taskName) {
+        step("Create task", () -> {
+            inbox().clickAddTaskButton();
+            quickAdd()
+                    .setTaskName(taskName)
+                    .clickSubmitButton();
+        });
+
+        step("Verify task name", () -> {
+            inbox().shouldContainTask(taskName);
+        });
+
+        TaskActions.taskCleanup(taskName);
+    }
+
+    @Test
+    @Tag("regression")
+    @DisplayName("Task name supports ASCII symbols")
+    void shouldCreateTaskWithAsciiSymbols() {
+        String taskName = "!@#$%^&*()_+-={}[]";
+
+        step("Create task", () -> {
+            inbox().clickAddTaskButton();
+            quickAdd()
+                    .setTaskName(taskName)
+                    .clickSubmitButton();
+        });
+
+        step("Verify task name", () -> {
+            inbox().shouldContainTask(taskName);
+        });
+
+        TaskActions.taskCleanup(taskName);
+    }
+
+    @Test
+    @Tag("regression")
+    @DisplayName("Task name supports Unicode symbols")
+    void shouldCreateTaskWithUnicodeSymbols() {
+        String taskName = "№✓★";
+
+        step("Create task", () -> {
+            inbox().clickAddTaskButton();
+            quickAdd()
+                    .setTaskName(taskName)
+                    .clickSubmitButton();
+        });
+
+        step("Verify task name", () -> {
+            inbox().shouldContainTask(taskName);
+        });
+
+        TaskActions.taskCleanup(taskName);
+    }
+
+    @Test
+    @Tag("regression")
+    @DisplayName("Submit button is disabled when task name exceeds character limit")
+    void shouldDisableSubmitWhenTaskNameExceedsCharacterLimit() {
+        String longName = GeneratedData.nameOfLength(501);
+
+        step("Enter task name longer than allowed limit", () -> {
+            inbox().clickAddTaskButton();
+            quickAdd().setTaskName(longName);
+        });
+
+        step("Verify character limit error and disabled submit button", () -> {
+            quickAdd()
+                    .shouldShowCharacterLimitError()
+                    .shouldHaveDisabledSubmitButton();
         });
     }
 }
