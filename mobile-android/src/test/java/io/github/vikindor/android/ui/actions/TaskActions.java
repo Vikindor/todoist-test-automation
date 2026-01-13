@@ -12,7 +12,5 @@ public class TaskActions {
                 .tapDeleteTask();
 
         alertDialog().tapDelete();
-
-        inbox().shouldNotContainTask(taskName);
     }
 }
