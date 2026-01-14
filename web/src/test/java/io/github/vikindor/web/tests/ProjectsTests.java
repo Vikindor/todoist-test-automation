@@ -97,7 +97,7 @@ public class ProjectsTests extends TestBase {
     void shouldNotEnableSubmitButtonWhenNameIsBlank() {
         String projectName = " ";
 
-        step("Initiate project creation and verify submit button is disabled by default", () -> {
+        step("Open project creation and verify submit button is disabled by default", () -> {
             projects()
                     .openPage()
                     .clickAddButton()

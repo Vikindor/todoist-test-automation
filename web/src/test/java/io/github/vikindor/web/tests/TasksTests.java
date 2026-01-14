@@ -103,7 +103,7 @@ public class TasksTests extends TestBase {
     void shouldNotEnableSubmitButtonWhenNameIsBlank() {
         String taskName = " ";
 
-        step("Initiate task creation and verify submit button is disabled by default", () -> {
+        step("Open task creation and verify submit button is disabled by default", () -> {
             inbox().clickAddTaskButton();
             quickAdd().shouldHaveDisabledSubmitButton();
         });
