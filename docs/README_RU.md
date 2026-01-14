@@ -241,7 +241,7 @@ allureReport
 
 # 🔌 Интеграции
 
-## <a href="https://jenkins.autotests.cloud/job/037-vikindor-final_todoist_app/" target="_blank" rel="noopener noreferrer"><img width="4%" src="media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/> Jenkins</a>
+## <a href="https://jenkins.autotests.cloud/job/037-vikindor-final_todoist_app/" target="_blank" rel="noopener noreferrer"><img width="4%" src="../media/logos/jenkins.png" alt="Jenkins logo" title="Jenkins"/> Jenkins</a>
 
 Проект запускается через Jenkins-джобу, которая выступает основной CI-точкой входа для выполнения автоматизированных тестов.
 
@@ -251,7 +251,7 @@ allureReport
 <img width="100%" src="../media/screenshots/jenkins_1.jpg" alt="Jenkins Job screenshot" title="Jenkins Job"/>
 </p>
 
-## <a href="https://jenkins.autotests.cloud/job/037-vikindor-final_todoist_app/allure" target="_blank" rel="noopener noreferrer"><img width="4%" src="media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/> Allure Report</a>
+## <a href="https://jenkins.autotests.cloud/job/037-vikindor-final_todoist_app/allure" target="_blank" rel="noopener noreferrer"><img width="4%" src="../media/logos/allure_report.png" alt="Allure Report logo" title="Allure Report"/> Allure Report</a>
 
 После выполнения тестов формируется единый Allure-отчёт, агрегирующий результаты всех тестовых слоёв.
 
