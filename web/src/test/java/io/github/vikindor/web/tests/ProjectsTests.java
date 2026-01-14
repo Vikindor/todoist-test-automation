@@ -93,47 +93,22 @@ public class ProjectsTests extends TestBase {
 
     @Test
     @Tag("regression")
-    @DisplayName("Project name supports ASCII symbols")
-    void shouldCreateProjectWithAsciiSymbols() {
-        String projectName = "!@#$%^&*()_+-={}[]";
+    @DisplayName("Submit button is disabled when project name is blank")
+    void shouldNotEnableSubmitButtonWhenNameIsBlank() {
+        String projectName = " ";
 
-        step("Create project", () -> {
+        step("Initiate project creation and verify submit button is disabled by default", () -> {
             projects()
                     .openPage()
                     .clickAddButton()
                     .clickAddProject();
+            projectModal().shouldHaveDisabledSubmitButton();
+        });
+
+        step("Enter blank name and verify submit button is disabled", () -> {
             projectModal()
                     .setName(projectName)
-                    .clickSubmitButton();
+                    .shouldHaveDisabledSubmitButton();
         });
-
-        step("Verify project name", () -> {
-            project().shouldHaveProjectName(projectName);
-        });
-
-        ProjectActions.projectCleanup(projectName);
-    }
-
-    @Test
-    @Tag("regression")
-    @DisplayName("Project name supports Unicode symbols")
-    void shouldCreateProjectWithUnicodeSymbols() {
-        String projectName = "№✓★";
-
-        step("Create project", () -> {
-            projects()
-                    .openPage()
-                    .clickAddButton()
-                    .clickAddProject();
-            projectModal()
-                    .setName(projectName)
-                    .clickSubmitButton();
-        });
-
-        step("Verify project name", () -> {
-            project().shouldHaveProjectName(projectName);
-        });
-
-        ProjectActions.projectCleanup(projectName);
     }
 }

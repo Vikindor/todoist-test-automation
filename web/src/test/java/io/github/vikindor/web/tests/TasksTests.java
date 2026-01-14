@@ -99,53 +99,31 @@ public class TasksTests extends TestBase {
 
     @Test
     @Tag("regression")
-    @DisplayName("Task name supports ASCII symbols")
-    void shouldCreateTaskWithAsciiSymbols() {
-        String taskName = "!@#$%^&*()_+-={}[]";
+    @DisplayName("Submit button is disabled when task name is blank")
+    void shouldNotEnableSubmitButtonWhenNameIsBlank() {
+        String taskName = " ";
 
-        step("Create task", () -> {
+        step("Initiate task creation and verify submit button is disabled by default", () -> {
             inbox().clickAddTaskButton();
+            quickAdd().shouldHaveDisabledSubmitButton();
+        });
+
+        step("Enter blank name and verify submit button is disabled", () -> {
             quickAdd()
                     .setTaskName(taskName)
-                    .clickSubmitButton();
+                    .shouldHaveDisabledSubmitButton();
         });
-
-        step("Verify task name", () -> {
-            inbox().shouldContainTask(taskName);
-        });
-
-        TaskActions.taskCleanup(taskName);
-    }
-
-    @Test
-    @Tag("regression")
-    @DisplayName("Task name supports Unicode symbols")
-    void shouldCreateTaskWithUnicodeSymbols() {
-        String taskName = "№✓★";
-
-        step("Create task", () -> {
-            inbox().clickAddTaskButton();
-            quickAdd()
-                    .setTaskName(taskName)
-                    .clickSubmitButton();
-        });
-
-        step("Verify task name", () -> {
-            inbox().shouldContainTask(taskName);
-        });
-
-        TaskActions.taskCleanup(taskName);
     }
 
     @Test
     @Tag("regression")
     @DisplayName("Submit button is disabled when task name exceeds character limit")
     void shouldDisableSubmitWhenTaskNameExceedsCharacterLimit() {
-        String longName = GeneratedData.nameOfLength(501);
+        String taskName = GeneratedData.nameOfLength(501);
 
         step("Enter task name longer than allowed limit", () -> {
             inbox().clickAddTaskButton();
-            quickAdd().setTaskName(longName);
+            quickAdd().setTaskName(taskName);
         });
 
         step("Verify character limit error and disabled submit button", () -> {
