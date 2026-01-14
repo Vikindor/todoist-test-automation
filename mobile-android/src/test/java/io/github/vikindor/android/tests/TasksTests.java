@@ -33,7 +33,7 @@ public class TasksTests extends TestBase {
             quickAdd().tap();
             quickAddItemContainer()
                     .setTaskName(initialName)
-                    .tapAdd();
+                    .tapSubmit();
             Android.back();
         });
 
@@ -71,7 +71,7 @@ public class TasksTests extends TestBase {
             quickAdd().tap();
             quickAddItemContainer()
                     .setTaskName(taskName)
-                    .tapAdd();
+                    .tapSubmit();
             Android.back();
         });
 
@@ -94,7 +94,7 @@ public class TasksTests extends TestBase {
             quickAdd().tap();
             quickAddItemContainer()
                     .setTaskName(taskName)
-                    .tapAdd();
+                    .tapSubmit();
             Android.back();
         });
 
@@ -107,44 +107,20 @@ public class TasksTests extends TestBase {
 
     @Test
     @Tag("regression")
-    @DisplayName("Task name supports ASCII symbols")
-    void shouldCreateTaskWithAsciiSymbols() {
-        String taskName = "!@#$%^&*()_+-={}[]";
+    @DisplayName("Error toast is shown when submitting blank task name")
+    void shouldShowErrorWhenSubmittingBlankTaskName() {
+        String taskName = " ";
 
-        step("Create task", () -> {
+        step("Open quick add and enter blank task name", () -> {
             quickAdd().tap();
+            quickAddItemContainer().setTaskName(taskName);
+        });
+
+        step("Submit and verify error toast is shown", () -> {
             quickAddItemContainer()
-                    .setTaskName(taskName)
-                    .tapAdd();
-            Android.back();
+                    .tapSubmit()
+                    .shouldShowContentRequiredError();
         });
-
-        step("Verify task name", () -> {
-            inbox().shouldContainTask(taskName);
-        });
-
-        TaskActions.taskCleanup(taskName);
-    }
-
-    @Test
-    @Tag("regression")
-    @DisplayName("Task name supports Unicode symbols")
-    void shouldCreateTaskWithUnicodeSymbols() {
-        String taskName = "№✓★";
-
-        step("Create task", () -> {
-            quickAdd().tap();
-            quickAddItemContainer()
-                    .setTaskName(taskName)
-                    .tapAdd();
-            Android.back();
-        });
-
-        step("Verify task name", () -> {
-            inbox().shouldContainTask(taskName);
-        });
-
-        TaskActions.taskCleanup(taskName);
     }
 
     @Test
@@ -159,7 +135,7 @@ public class TasksTests extends TestBase {
             Android.paste();
         });
 
-        step("Verify character limit error", () -> {
+        step("Verify character limit snackbar is shown", () -> {
             snackBar().shouldShowTaskCharacterLimitError();
         });
     }

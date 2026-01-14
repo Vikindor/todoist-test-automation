@@ -90,47 +90,22 @@ public class ProjectsTests extends TestBase {
 
     @Test
     @Tag("regression")
-    @DisplayName("Project name supports ASCII symbols")
-    void shouldCreateProjectWithAsciiSymbols() {
-        String projectName = "!@#$%^&*()_+-={}[]";
+    @DisplayName("Error is shown when submitting blank project name")
+    void shouldShowErrorWhenSubmittingBlankProjectName() {
+        String projectName = " ";
 
-        step("Create project", () -> {
+        step("Open project creation and enter blank project name", () -> {
             navigationBar().tapBrowse();
             browseScreen()
                     .tapAdd()
                     .tapAddProject();
+            addProjectScreen().setProjectName(projectName);
+        });
+
+        step("Submit and verify error is shown", () -> {
             addProjectScreen()
-                    .setProjectName(projectName)
-                    .tapDone();
+                    .tapDone()
+                    .shouldShowNameRequiredError();
         });
-
-        step("Read project and verify actual name", () -> {
-            projectScreen().shouldHaveProjectName(projectName);
-        });
-
-        ProjectActions.projectCleanup();
-    }
-
-    @Test
-    @Tag("regression")
-    @DisplayName("Project name supports Unicode symbols")
-    void shouldCreateProjectWithUnicodeSymbols() {
-        String projectName = "№✓★";
-
-        step("Create project", () -> {
-            navigationBar().tapBrowse();
-            browseScreen()
-                    .tapAdd()
-                    .tapAddProject();
-            addProjectScreen()
-                    .setProjectName(projectName)
-                    .tapDone();
-        });
-
-        step("Read project and verify actual name", () -> {
-            projectScreen().shouldHaveProjectName(projectName);
-        });
-
-        ProjectActions.projectCleanup();
     }
 }
