@@ -2,6 +2,7 @@ package io.github.vikindor.web.ui.components;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ProjectModal {
@@ -18,6 +19,11 @@ public class ProjectModal {
 
     public ProjectModal clickSubmitButton() {
         submitButton.click();
+        return this;
+    }
+
+    public ProjectModal shouldHaveDisabledSubmitButton() {
+        submitButton.shouldHave(attribute("aria-disabled", "true"));
         return this;
     }
 }
