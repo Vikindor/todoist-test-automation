@@ -11,6 +11,8 @@ public class TaskNameTestData {
                 "T",
                 "テストデータ",
                 "Задача",
+                "!@#$%^&*()_+-={}[]", // ASCII
+                "№✓★", // Unicode
                 GeneratedData.nameOfLength(500)
         );
     }

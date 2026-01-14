@@ -11,6 +11,8 @@ public class ProjectNameTestData {
                 "P",
                 "テストデータ",
                 "Проект",
+                "!@#$%^&*()_+-={}[]", // ASCII
+                "№✓★", // Unicode
                 GeneratedData.nameOfLength(120)
         );
     }
