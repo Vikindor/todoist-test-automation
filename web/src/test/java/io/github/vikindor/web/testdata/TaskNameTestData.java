@@ -8,9 +8,9 @@ public class TaskNameTestData {
         return Stream.of(
                 ".",
                 "1",
-                "T",
+                "X",
                 "テストデータ",
-                "Задача",
+                "Имя",
                 "!@#$%^&*()_+-={}[]", // ASCII
                 "№✓★", // Unicode
                 GeneratedData.nameOfLength(500)

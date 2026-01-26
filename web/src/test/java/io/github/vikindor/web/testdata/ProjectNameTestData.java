@@ -8,9 +8,9 @@ public class ProjectNameTestData {
         return Stream.of(
                 ".",
                 "1",
-                "P",
+                "X",
                 "テストデータ",
-                "Проект",
+                "Имя",
                 "!@#$%^&*()_+-={}[]", // ASCII
                 "№✓★", // Unicode
                 GeneratedData.nameOfLength(120)
