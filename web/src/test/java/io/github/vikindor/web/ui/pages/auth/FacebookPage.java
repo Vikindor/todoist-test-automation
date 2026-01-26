@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class FacebookPage {
 
-    private final SelenideElement facebookLoginTitle = $$("div").findBy(exactText("Log Into Facebook"));
+    private final SelenideElement facebookLoginTitle = $$("div").findBy(exactText("Log in to Facebook"));
 
     public FacebookPage shouldHaveTitle() {
         facebookLoginTitle.shouldBe(visible);
