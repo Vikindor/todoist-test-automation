@@ -1,6 +1,7 @@
 package io.github.vikindor.web.utils;
 
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -14,6 +15,11 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class AllureAttach {
+
+    public static void userSession(int accountIndex, String email) {
+        Allure.parameter("Account Index", accountIndex);
+        Allure.parameter("Email", email);
+    }
 
     @Attachment(value = "Screenshot", type = "image/png")
     public static byte[] screenshot() {
