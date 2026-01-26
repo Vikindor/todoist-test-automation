@@ -43,6 +43,9 @@ allure {
 }
 
 tasks.test {
+    maxParallelForks = 1
+    forkEvery = 0
+
     useJUnitPlatform()
 
     systemProperties(
