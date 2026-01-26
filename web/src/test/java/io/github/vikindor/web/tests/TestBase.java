@@ -24,6 +24,7 @@ public class TestBase {
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.baseUrl = System.getProperty("baseUrl", "https://app.todoist.com");
         Configuration.pageLoadStrategy = "eager";
+        Configuration.timeout = 15_000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.of("enableVNC", true, "enableVideo", true));
