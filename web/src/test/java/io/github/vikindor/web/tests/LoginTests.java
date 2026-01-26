@@ -1,6 +1,8 @@
 package io.github.vikindor.web.tests;
 
 import io.github.vikindor.web.configs.ProjectConfig;
+import io.github.vikindor.web.context.CurrentUser;
+import io.github.vikindor.web.extensions.WithLogin;
 import io.github.vikindor.web.testdata.GeneratedData;
 import io.github.vikindor.web.ui.pages.auth.*;
 import io.qameta.allure.Epic;
@@ -55,16 +57,18 @@ public class LoginTests extends TestBase {
         step("Verify password validation error", loginPage()::shouldShowPasswordValidationError);
     }
 
+    @WithLogin
     @Test
     @Tag("regression")
     @DisplayName("Error is shown for wrong password")
     void shouldShowWrongEmailOrPasswordError() {
+        String validEmail = config.todoistEmail(CurrentUser.getAccountIndex());
         String invalidPassword = GeneratedData.invalidPassword();
 
         step("Submit valid email with invalid password", () -> {
             loginPage()
                     .openPage()
-                    .setEmail(config.todoistEmail())
+                    .setEmail(validEmail)
                     .setPassword(invalidPassword)
                     .clickLogInButton();
         });
