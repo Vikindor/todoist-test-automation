@@ -12,8 +12,8 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class AuthHelper {
 
-    public static void apiLoginAndStabilize() {
-        Response response = TodoistAuthApi.login();
+    public static void apiLoginAndStabilize(int accountIndex) {
+        Response response = TodoistAuthApi.login(accountIndex);
         applyAuthCookies(response);
         stabilizeAuthenticatedApp();
     }
