@@ -11,11 +11,11 @@ public class TodoistAuthApi {
 
     private static final ProjectConfig config = ConfigFactory.create(ProjectConfig.class);
 
-    public static Response login() {
+    public static Response login(int accountIndex) {
         AuthData authData = new AuthData(
-                config.todoistEmail(),
-                config.todoistPassword(),
-                config.todoistDeviceId()
+                config.todoistEmail(accountIndex),
+                config.todoistPassword(accountIndex),
+                config.todoistDeviceId(accountIndex)
         );
 
         return given()
