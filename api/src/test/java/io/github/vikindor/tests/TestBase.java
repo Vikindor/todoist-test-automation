@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import static io.restassured.RestAssured.basePath;
 import static io.restassured.RestAssured.baseURI;
 
-public abstract class TestBase {
+public class TestBase {
     @BeforeAll
     static void setupApi() {
         baseURI = System.getProperty("baseUrl", "https://api.todoist.com");

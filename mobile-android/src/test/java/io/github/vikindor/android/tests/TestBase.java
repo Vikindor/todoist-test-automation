@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 import static io.github.vikindor.android.configs.MobilePlatform.*;
 
-public abstract class TestBase {
+public class TestBase {
 
     @BeforeAll
     static void setupConfig() {
