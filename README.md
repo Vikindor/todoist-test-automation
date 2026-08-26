@@ -111,7 +111,7 @@ The repository is designed as a **multi-module Gradle project** where each modul
   Each module exposes a single, explicit execution entry point, allowing local runs and CI pipelines to compose test executions without special-case handling.
 
 
-# 🧩 Repository structure
+# 📁 Repository structure
 
 ```
 .
