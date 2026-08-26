@@ -1,14 +1,14 @@
 package io.github.vikindor.tests;
 
+import io.github.vikindor.helpers.ApiAllureListener;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
-
-import static io.restassured.RestAssured.basePath;
-import static io.restassured.RestAssured.baseURI;
 
 public class TestBase {
     @BeforeAll
     static void setupApi() {
-        baseURI = System.getProperty("baseUrl", "https://api.todoist.com");
-        basePath = "/api/v1";
+        RestAssured.baseURI = System.getProperty("baseUrl", "https://api.todoist.com");
+        RestAssured.basePath = "/api/v1";
+        RestAssured.filters(ApiAllureListener.filter());
     }
 }

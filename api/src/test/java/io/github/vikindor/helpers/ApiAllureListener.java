@@ -3,11 +3,13 @@ package io.github.vikindor.helpers;
 import io.qameta.allure.restassured.AllureRestAssured;
 
 public class ApiAllureListener {
-    private static final AllureRestAssured FILTER = new AllureRestAssured();
+    private ApiAllureListener(){}
 
-    public static AllureRestAssured withCustomTemplate() {
-        FILTER.setRequestTemplate("request.ftl");
-        FILTER.setResponseTemplate("response.ftl");
+    private static final AllureRestAssured FILTER = new AllureRestAssured()
+            .setRequestTemplate("request.ftl")
+            .setResponseTemplate("response.ftl");
+
+    public static AllureRestAssured filter() {
         return FILTER;
     }
 }
