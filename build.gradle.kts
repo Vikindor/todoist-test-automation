@@ -1,5 +1,5 @@
 plugins {
-    id("io.qameta.allure") version "3.0.0"
+    id("io.qameta.allure") version "4.1.0"
 }
 
 group = "io.github.vikindor"
@@ -63,6 +63,6 @@ tasks.register<Exec>("sendAllureTelegram") {
         "java",
         "-DconfigFile=notifications/config.json",
         "-jar",
-        "notifications/allure-notifications-4.11.0.jar"
+        "notifications/allure-notifications-5.1.1.jar"
     )
 }
